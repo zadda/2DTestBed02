@@ -5,7 +5,7 @@ public class Sniper : MonoBehaviour
 {
 
     [SerializeField]
-    private SniperBullet bullet;
+    private GameObject bullet;
     [SerializeField]
     private GameObject shell;
     private SpriteRenderer spriteSniper;

@@ -5,7 +5,7 @@ public class RPG : MonoBehaviour
 {
 
     [SerializeField]
-    private RPGAmmo bullet;
+    private GameObject bullet;
     [SerializeField]
     private GameObject shell;
 

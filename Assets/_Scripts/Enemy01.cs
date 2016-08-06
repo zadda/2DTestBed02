@@ -41,7 +41,8 @@ public class Enemy01 : MonoBehaviour
             Fire();
 
             // TODO RayCast Example
-            //Debug.DrawRay(lineStart.position, Vector3.left * 20f, Color.green);
+            Debug.DrawRay(lineStart.position, Vector3.left * 45f, Color.green);
+            
             //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
         }
     }
@@ -67,10 +68,29 @@ public class Enemy01 : MonoBehaviour
     {
         GameObject objectCollidedwith = collision.gameObject;
 
-        if (objectCollidedwith.GetComponent<GunBullet>())
+        //get amount of damage
+
+        //check first if we are colliding by a Player Projectile 
+        //if so, get Damage value from Player Projectile
+
+        if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
         {
+            float damage = objectCollidedwith.GetComponent<PlayerProjectileDamage>().damage;
+
+            health -= damage;
             Destroy(objectCollidedwith);
-            health -= 10;
         }
+
+       
+
+        //if (objectCollidedwith.GetComponent<GunBullet>())
+        //{
+        //    Destroy(objectCollidedwith);
+        //    health -= 10;
+        //}
+        //else if(objectCollidedwith.GetComponent<ShotGunBullets>())
+        //{
+        //    health -= 20;
+        //}
     }
 }

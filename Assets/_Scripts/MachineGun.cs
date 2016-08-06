@@ -5,7 +5,7 @@ public class MachineGun : MonoBehaviour
 {
 
     [SerializeField]
-    private MachineGunBullet bullet;
+    private GameObject bullet;
     [SerializeField]
     private GameObject shell;
     private SpriteRenderer spriteGun;

@@ -69,15 +69,11 @@
     <Compile Include="Assets\_Scripts\Gun.cs" />
     <Compile Include="Assets\_Scripts\MachineGun.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
+    <Compile Include="Assets\_Scripts\PlayerProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\RPG.cs" />
     <Compile Include="Assets\_Scripts\ShellShredder.cs" />
     <Compile Include="Assets\_Scripts\ShotGun.cs" />
     <Compile Include="Assets\_Scripts\Sniper.cs" />
-    <Compile Include="Assets\_Scripts\WeaponProjectiles\GunBullet.cs" />
-    <Compile Include="Assets\_Scripts\WeaponProjectiles\MachineGunBullet.cs" />
-    <Compile Include="Assets\_Scripts\WeaponProjectiles\RPGAmmo.cs" />
-    <Compile Include="Assets\_Scripts\WeaponProjectiles\ShotGunBullets.cs" />
-    <Compile Include="Assets\_Scripts\WeaponProjectiles\SniperBullet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
