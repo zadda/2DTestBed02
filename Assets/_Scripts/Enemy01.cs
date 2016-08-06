@@ -33,7 +33,7 @@ public class Enemy01 : MonoBehaviour
     {
 
         countDowntime -= Time.deltaTime;
-
+        // check of Player in singth is
         RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 45);
 
         if (hit.collider != null && countDowntime <= 0)

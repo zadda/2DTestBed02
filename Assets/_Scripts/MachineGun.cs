@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class MachineGun : MonoBehaviour
 {
 
@@ -8,6 +8,17 @@ public class MachineGun : MonoBehaviour
     private GameObject bullet;
     [SerializeField]
     private GameObject shell;
+
+    [SerializeField]
+    private GameObject barrel;
+    [SerializeField]
+    private Text ammoLeft;
+
+
+    private int ammo = 24;
+    private Rigidbody2D rigidBody;
+
+
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
@@ -58,4 +69,35 @@ public class MachineGun : MonoBehaviour
             transform.position += Vector3.left * Player.walkSpeed;
         }
     }
+
+    public void Shoot()
+
+    {
+        //TODO switch between single shot and multiple Shots
+        //ammo counter
+        ammo -= 3;
+        ammoLeft.text = ammo.ToString();
+
+        //kogel vertrekt van positie van Barrel
+        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+
+        //TODO check if eject shell on players location is correct
+        GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+
+        Invoke("SecondShot", 0.3f);
+
+    }
+
+    void SecondShot()
+    {
+        //kogel vertrekt van positie van Barrel
+        GameObject kogel2 = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+        kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+
+        //TODO check if eject shell on players location is correct
+        GameObject huls2 = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+
+    }
+
 }

@@ -16,6 +16,7 @@ public class ShotGun : MonoBehaviour
 
     private int ammo = 24;
     private Rigidbody2D rigidBody;
+
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
@@ -70,15 +71,7 @@ public class ShotGun : MonoBehaviour
     public void Shoot()
 
     {
-
-
-        //beweeg geweer Z-axis afhankelijk van positie Y
-        //transform.rotation = Quaternion.Euler(0f,0f, crossPosition.y);
-
-
-        //Kogel vertrekt van positie van CrossHair
-        //GameObject kogel = Instantiate(bullet, crossPosition, Quaternion.identity) as GameObject;
-
+        //
         //ammo counter
         ammo -= 2;
         ammoLeft.text = ammo.ToString();

@@ -16,7 +16,13 @@ public class Player : MonoBehaviour
     private Gun gun;
     [SerializeField]
     private ShotGun shotgun;
-  
+    [SerializeField]
+    private MachineGun machinegun;
+    [SerializeField]
+    private Sniper sniper;
+    [SerializeField]
+    private RPG rpg;
+
 
     private float maxDistanceCrossGunX = 25;
     private float maxDistanceCrossGunY = 25;
@@ -61,6 +67,19 @@ public class Player : MonoBehaviour
             ShotGunFire();
         }
 
+        if (selectedWeapon == "MachineGun")
+        {
+            MachineGunFire();
+        }
+
+        if (selectedWeapon == "Sniper")
+        {
+            SniperFire();
+        }
+        if (selectedWeapon == "RPG")
+        {
+            RPGFire();
+        }
     }
 
     void Move()
@@ -116,6 +135,30 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             shotgun.Shoot();
+        }
+    }
+
+    void MachineGunFire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            machinegun.Shoot();
+        }
+    }
+
+    void SniperFire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            sniper.Shoot();
+        }
+    }
+
+    void RPGFire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            rpg.Shoot();
         }
     }
 }

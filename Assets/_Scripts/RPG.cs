@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RPG : MonoBehaviour 
 {
@@ -8,6 +9,15 @@ public class RPG : MonoBehaviour
     private GameObject bullet;
     [SerializeField]
     private GameObject shell;
+
+    [SerializeField]
+    private GameObject barrel;
+    [SerializeField]
+    private Text ammoLeft;
+
+
+    private int ammo = 24;
+    private Rigidbody2D rigidBody;
 
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
@@ -59,4 +69,19 @@ public class RPG : MonoBehaviour
             transform.position += Vector3.left * Player.walkSpeed;
         }
     }
+
+    public void Shoot()
+
+    {
+        //TODO switch between single shot and multiple Shots
+        //ammo counter
+        ammo -= 1;
+        ammoLeft.text = ammo.ToString();
+
+        //kogel vertrekt van positie van Barrel
+        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+    }
+
+
 }
