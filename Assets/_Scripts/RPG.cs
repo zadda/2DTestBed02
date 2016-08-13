@@ -82,6 +82,4 @@ public class RPG : MonoBehaviour
         GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
     }
-
-
 }

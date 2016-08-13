@@ -17,7 +17,7 @@ public class Enemy01 : MonoBehaviour
     [SerializeField]
     private Transform barrel;
 
-    private float repeatFireRate = 10;
+  
     private float countDowntime = 2.35f;
 
     public float health = 120;
@@ -33,8 +33,10 @@ public class Enemy01 : MonoBehaviour
     {
 
         countDowntime -= Time.deltaTime;
-        // check of Player in singth is
+        // check of Player in sight is
         RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 45);
+
+        //is er een hit, en is er genoeg tijd tussen het vorige schot?
 
         if (hit.collider != null && countDowntime <= 0)
         {
@@ -81,6 +83,10 @@ public class Enemy01 : MonoBehaviour
             Destroy(objectCollidedwith);
         }
 
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
        
 
         //if (objectCollidedwith.GetComponent<GunBullet>())

@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
 
     
-    private float runSpeed = 10f;
+    
     private SpriteRenderer sprite;
     
     [SerializeField]
@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     void Start () 
 	{
         sprite = GetComponent<SpriteRenderer>();
+
+        gun.transform.position = new Vector3(11 - 1.5f, 3 + 4);
 
         //start positie CrossHair
         //crosshair.transform.position = new Vector3(10, 10);

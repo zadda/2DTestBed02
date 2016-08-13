@@ -88,7 +88,7 @@ public class Sniper : MonoBehaviour
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
 
         //TODO check if eject shell on players location is correct
-        GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+        Instantiate(shell, transform.position, Quaternion.identity);
         
     }
 

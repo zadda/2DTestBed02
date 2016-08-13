@@ -9,7 +9,17 @@ public class ShellShredder : MonoBehaviour
     //    Destroy(collision.gameObject);
     //}
     //TODO Triggers gebruiken
-    public void OnCollisionEnter(Collision collision)
+    //public void OnCollisionEnter(Collision collision)
+    //{
+    //    Destroy(collision.gameObject);
+    //}
+
+    //public void OnCollisionEnter(Collision collision)
+    //{
+    //    Destroy(collision.gameObject);
+    //}
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
     }

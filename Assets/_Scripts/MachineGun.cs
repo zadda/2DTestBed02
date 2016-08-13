@@ -83,7 +83,7 @@ public class MachineGun : MonoBehaviour
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
 
         //TODO check if eject shell on players location is correct
-        GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+        Instantiate(shell, transform.position, Quaternion.identity);
 
         Invoke("SecondShot", 0.3f);
 
@@ -96,7 +96,7 @@ public class MachineGun : MonoBehaviour
         kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
 
         //TODO check if eject shell on players location is correct
-        GameObject huls2 = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+        Instantiate(shell, transform.position, Quaternion.identity);
 
     }
 
