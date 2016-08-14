@@ -17,10 +17,17 @@ public class Enemy01 : MonoBehaviour
     [SerializeField]
     private Transform barrel;
 
-  
+    [SerializeField]
+    private SpriteRenderer sprite;
+
+
     private float countDowntime = 2.35f;
 
     public float health = 120;
+
+    private bool ceaseFire = false;
+
+    private float flashGrenadeDuration = 5;
 
     // Use this for initialization
     void Start()
@@ -31,6 +38,12 @@ public class Enemy01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (ceaseFire)
+        {
+            HitByFlashEffect();
+        }
+
 
         countDowntime -= Time.deltaTime;
         // check of Player in sight is
@@ -51,6 +64,11 @@ public class Enemy01 : MonoBehaviour
 
     void Fire()
     {
+
+        if (ceaseFire)
+        {
+            return;
+        }
         countDowntime = 2.35f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;
@@ -87,16 +105,36 @@ public class Enemy01 : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
 
-        //if (objectCollidedwith.GetComponent<GunBullet>())
-        //{
-        //    Destroy(objectCollidedwith);
-        //    health -= 10;
-        //}
-        //else if(objectCollidedwith.GetComponent<ShotGunBullets>())
-        //{
-        //    health -= 20;
-        //}
+        // Hit by FlashGrenade -> cease fire flip sprite
+
+        if (objectCollidedwith.tag == "Flash")
+        {
+            ceaseFire = true;
+            HitByFlashEffect();
+        }
+
     }
+
+    void HitByFlashEffect()
+    {
+        flashGrenadeDuration -= Time.deltaTime;
+
+        if (flashGrenadeDuration >= 0)
+        {
+            sprite.flipX = true;
+            Invoke("FlipXFalse", 1f);
+        }
+        else
+        {
+            ceaseFire = false;
+            flashGrenadeDuration = 5;
+        }
+    }
+
+    void FlipXFalse()
+    {
+        sprite.flipX = false;
+    }
+
 }

@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FlashBang.cs" />
+    <Compile Include="Assets\PlayerHealthBar.cs" />
     <Compile Include="Assets\PlayerShield.cs" />
     <Compile Include="Assets\_Scripts\Buttons.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />

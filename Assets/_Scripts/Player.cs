@@ -4,8 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour 
 {
 
+    public static float playerHealth = 500;
     
-    
+
     private SpriteRenderer sprite;
     
     [SerializeField]
@@ -23,14 +24,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private RPG rpg;
 
+    [SerializeField]
+    private FlashBang flashBang;
+
 
     private float maxDistanceCrossGunX = 25;
     private float maxDistanceCrossGunY = 25;
-
-
-
-
-
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
@@ -82,6 +81,13 @@ public class Player : MonoBehaviour
         {
             RPGFire();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+           flashBang.Throw();
+        }
+
+
     }
 
     void Move()
@@ -161,6 +167,32 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rpg.Shoot();
+        }
+    }
+
+    // Enemy Projectile detection
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject objectCollidedwith = collision.gameObject;
+
+        //get amount of damage
+
+        //check first if we are colliding by a Player Projectile 
+        //if so, get Damage value from Player Projectile
+
+        if (objectCollidedwith.GetComponent<EnemyProjectileDamage>())
+        {
+            float damage = objectCollidedwith.GetComponent<EnemyProjectileDamage>().damage;
+
+            playerHealth -= damage;
+            Destroy(objectCollidedwith);
+        }
+
+        if (playerHealth <= 0)
+        {
+            //TODO game over or lose life
+            //Destroy(gameObject);
         }
     }
 }
