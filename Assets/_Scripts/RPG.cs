@@ -22,6 +22,8 @@ public class RPG : MonoBehaviour
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
+    Vector3 mousePOS;
+
     // Use this for initialization
     void Start()
     {
@@ -32,7 +34,17 @@ public class RPG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        //beweeg geweer Z-axis afhankelijk van positie Y
+        //transform.rotation = Quaternion.Euler(0f,0f, crossPosition.y);
+
+        mousePOS = Input.mousePosition;
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 15);
+        }
+
+
         if (SelectedWeapon.selectedWeapon == "RPG" && Input.GetMouseButtonDown(0))
         {
             Shoot();
@@ -84,7 +96,21 @@ public class RPG : MonoBehaviour
         ammoLeft.text = ammo.ToString();
 
         //kogel vertrekt van positie van Barrel
-        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+
+        
+        //        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, mousePOS.y / 15)) as GameObject;
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 25, 0);
+        }
+        //else
+        //{
+        //    GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+        //    kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+        //}
+       
+        //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
     }
 }

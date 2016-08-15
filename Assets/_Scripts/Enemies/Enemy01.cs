@@ -114,6 +114,20 @@ public class Enemy01 : MonoBehaviour
             HitByFlashEffect();
         }
 
+        // Hit by Grenade
+
+        if (objectCollidedwith.tag == "Grenade")
+        {
+
+            Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
+
+            rigid.velocity = new Vector3(50, 25, 0);
+            
+            //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);
+
+        }
+
+
     }
 
     void HitByFlashEffect()

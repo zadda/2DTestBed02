@@ -86,8 +86,7 @@ public class Gun : MonoBehaviour
     {
 
   
-        //beweeg geweer Z-axis afhankelijk van positie Y
-        //transform.rotation = Quaternion.Euler(0f,0f, crossPosition.y);
+      
       
 
         //Kogel vertrekt van positie van CrossHair
