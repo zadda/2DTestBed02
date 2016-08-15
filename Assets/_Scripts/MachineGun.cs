@@ -32,22 +32,28 @@ public class MachineGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha3))
+      
+        //////////
+
+        if (SelectedWeapon.selectedWeapon == "MachineGun" && Input.GetMouseButtonDown(0))
         {
-            transform.position = new Vector3(Player.playerX , Player.playerY + 5);
-            Player.selectedWeapon = "MachineGun";
+            Shoot();
         }
 
-        if (Player.selectedWeapon == "MachineGun")
+        if (SelectedWeapon.selectedWeapon == "MachineGun")
+        {
+            transform.position = new Vector3(Player.playerX, Player.playerY + 5);
+        }
+
+        if (SelectedWeapon.selectedWeapon == "MachineGun")
         {
             MoveLeftRight();
         }
 
-        if (Player.selectedWeapon != "MachineGun")
+        if (SelectedWeapon.selectedWeapon != "MachineGun")
         {
             transform.position = startPosition;
         }
-
     }
 
     void MoveLeftRight()
@@ -70,7 +76,7 @@ public class MachineGun : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    void Shoot()
 
     {
         //TODO switch between single shot and multiple Shots

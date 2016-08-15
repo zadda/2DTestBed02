@@ -63,9 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FlashBang.cs" />
     <Compile Include="Assets\PlayerHealthBar.cs" />
     <Compile Include="Assets\PlayerShield.cs" />
+    <Compile Include="Assets\SelectedWeapon.cs" />
+    <Compile Include="Assets\SmokeGrenade.cs" />
     <Compile Include="Assets\_Scripts\Buttons.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyTank.cs" />
+    <Compile Include="Assets\_Scripts\FlashBang.cs" />
+    <Compile Include="Assets\_Scripts\Grenade.cs" />
     <Compile Include="Assets\_Scripts\Gun.cs" />
     <Compile Include="Assets\_Scripts\MachineGun.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />

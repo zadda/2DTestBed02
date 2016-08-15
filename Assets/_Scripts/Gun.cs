@@ -33,18 +33,25 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+
+        if ( SelectedWeapon.selectedWeapon == "Gun" && Input.GetMouseButtonDown(0))
         {
-            transform.position = new Vector3(Player.playerX -1.5f, Player.playerY + 4);
-            Player.selectedWeapon = "Gun";
+            Shoot();
         }
 
-        if (Player.selectedWeapon == "Gun")
+
+        if (SelectedWeapon.selectedWeapon == "Gun")
+        {
+            transform.position = new Vector3(Player.playerX -1.5f, Player.playerY + 4);
+            
+        }
+
+        if (SelectedWeapon.selectedWeapon == "Gun")
         {
             MoveLeftRight();
         }
 
-        if (Player.selectedWeapon != "Gun")
+        if (SelectedWeapon.selectedWeapon != "Gun")
         {
             transform.position = startPosition;
         }
@@ -74,7 +81,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector3 crossPosition)
+    void Shoot() //Vector3 crossPosition
 
     {
 

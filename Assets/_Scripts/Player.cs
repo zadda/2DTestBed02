@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private FlashBang flashBang;
+    [SerializeField]
+    private Grenade grenade;
+    [SerializeField]
+    private SmokeGrenade smoke;
 
 
     private float maxDistanceCrossGunX = 25;
@@ -34,7 +38,8 @@ public class Player : MonoBehaviour
     public static float playerX = 0f;
     public static float playerY = 0f;
 
-    public static string selectedWeapon = "Gun";
+    
+
     public static float walkSpeed = 0.25f;
 
 
@@ -57,37 +62,7 @@ public class Player : MonoBehaviour
         playerX = transform.position.x;
         playerY = transform.position.y;
         Move();
-
-        if (selectedWeapon == "Gun")
-        {
-            MoveCrossHairGun();
-        }
-
-        if (selectedWeapon == "ShotGun")
-        {
-            ShotGunFire();
-        }
-
-        if (selectedWeapon == "MachineGun")
-        {
-            MachineGunFire();
-        }
-
-        if (selectedWeapon == "Sniper")
-        {
-            SniperFire();
-        }
-        if (selectedWeapon == "RPG")
-        {
-            RPGFire();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-           flashBang.Throw();
-        }
-
-
+        
     }
 
     void Move()
@@ -129,46 +104,8 @@ public class Player : MonoBehaviour
             
          //gun.transform.rotation = new Quaternion(0f, 0f, crossPosition.y/60,0f);
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            //GameObject kogel = Instantiate(bullet, crossPosition, Quaternion.identity) as GameObject;
-            //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(2, 0, 0);
-            gun.Shoot(crossPosition);
-        }
     }
-
-    void ShotGunFire()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            shotgun.Shoot();
-        }
-    }
-
-    void MachineGunFire()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            machinegun.Shoot();
-        }
-    }
-
-    void SniperFire()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            sniper.Shoot();
-        }
-    }
-
-    void RPGFire()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            rpg.Shoot();
-        }
-    }
+    
 
     // Enemy Projectile detection
 

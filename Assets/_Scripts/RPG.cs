@@ -32,18 +32,23 @@ public class RPG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha5))
+        
+        if (SelectedWeapon.selectedWeapon == "RPG" && Input.GetMouseButtonDown(0))
         {
-            transform.position = new Vector3(Player.playerX -1, Player.playerY + 4);
-            Player.selectedWeapon = "RPG";
+            Shoot();
         }
 
-        if (Player.selectedWeapon == "RPG")
+        if (SelectedWeapon.selectedWeapon == "RPG")
+        {
+            transform.position = new Vector3(Player.playerX - 1, Player.playerY + 4);
+        }
+
+        if (SelectedWeapon.selectedWeapon == "RPG")
         {
             MoveLeftRight();
         }
 
-        if (Player.selectedWeapon != "RPG")
+        if (SelectedWeapon.selectedWeapon != "RPG")
         {
             transform.position = startPosition;
         }
@@ -70,7 +75,7 @@ public class RPG : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    void Shoot()
 
     {
         //TODO switch between single shot and multiple Shots

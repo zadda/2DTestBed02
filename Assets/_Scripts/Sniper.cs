@@ -32,25 +32,27 @@ public class Sniper : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        if (Input.GetKey(KeyCode.Alpha4))
+       
+        if (SelectedWeapon.selectedWeapon == "Sniper" && Input.GetMouseButtonDown(0))
         {
-            transform.position = new Vector3(Player.playerX + 5, Player.playerY + 5);
-            Player.selectedWeapon = "Sniper";
+            Shoot();
         }
 
-        if (Player.selectedWeapon == "Sniper")
+        if (SelectedWeapon.selectedWeapon == "Sniper")
+        {
+            transform.position = new Vector3(Player.playerX + 5, Player.playerY + 5);
+        }
+
+        if (SelectedWeapon.selectedWeapon == "Sniper")
         {
             MoveLeftRight();
         }
 
-        //reset weapon to start position when not selected
-
-        if (Player.selectedWeapon != "Sniper")
+        if (SelectedWeapon.selectedWeapon != "Sniper")
         {
             transform.position = startPosition;
         }
 
-        
     }
 
     void MoveLeftRight()
@@ -75,7 +77,7 @@ public class Sniper : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    void Shoot()
 
     {
         //TODO switch between single shot and multiple Shots

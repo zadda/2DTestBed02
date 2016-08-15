@@ -30,18 +30,22 @@ public class ShotGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (SelectedWeapon.selectedWeapon == "ShotGun" && Input.GetMouseButtonDown(0))
         {
-            transform.position = new Vector3(Player.playerX + 7, Player.playerY + 4);
-            Player.selectedWeapon = "ShotGun";
+            Shoot();
         }
 
-        if (Player.selectedWeapon == "ShotGun")
+        if (SelectedWeapon.selectedWeapon == "ShotGun")
+        {
+            transform.position = new Vector3(Player.playerX + 7, Player.playerY + 4);
+        }
+
+        if (SelectedWeapon.selectedWeapon == "ShotGun")
         {
             MoveLeftRight();
         }
 
-        if (Player.selectedWeapon != "ShotGun")
+        if (SelectedWeapon.selectedWeapon != "ShotGun")
         {
             transform.position = startPosition;
         }
@@ -68,7 +72,7 @@ public class ShotGun : MonoBehaviour
         }
     }
 
-    public void Shoot()
+   void Shoot()
 
     {
         //
