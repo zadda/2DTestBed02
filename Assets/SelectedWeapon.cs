@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SelectedWeapon : MonoBehaviour 
 {
-    public static string selectedWeapon = "";
-    public static string selectedGrenade = "";
+    public static string selectedWeapon = "Gun";
+    public static string selectedGrenade = "Grenade";
 
 	// Use this for initialization
 	void Start () 

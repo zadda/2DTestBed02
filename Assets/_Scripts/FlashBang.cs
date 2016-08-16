@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FlashBang : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class FlashBang : MonoBehaviour
     [SerializeField]
     private GameObject flash;
 
+    [SerializeField]
+    private Text ammoLeft;
+
+    private int ammo = 5;
+
     void Update()
     {
         if (SelectedWeapon.selectedGrenade == "Flash" && Input.GetMouseButtonDown(1))
@@ -24,6 +30,10 @@ public class FlashBang : MonoBehaviour
 
     public void Throw()
     {
+        //ammo counter
+        ammo--;
+        ammoLeft.text = ammo.ToString();
+
         GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
         granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(180, -15, 0);
         granaat.GetComponent<Rigidbody2D>().rotation = -25;

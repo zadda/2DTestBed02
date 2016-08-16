@@ -97,20 +97,20 @@ public class RPG : MonoBehaviour
 
         //kogel vertrekt van positie van Barrel
 
-        
+
         //        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, mousePOS.y / 15)) as GameObject;
-            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 25, 0);
-        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, mousePOS.y / 15)) as GameObject;
+        //    kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 25, 0);
+        //}
         //else
         //{
-        //    GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        //    kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
-        //}
-       
-        //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
     }
+
+    //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+
 }

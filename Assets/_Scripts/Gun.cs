@@ -84,11 +84,6 @@ public class Gun : MonoBehaviour
     void Shoot() //Vector3 crossPosition
 
     {
-
-  
-      
-      
-
         //Kogel vertrekt van positie van CrossHair
         //GameObject kogel = Instantiate(bullet, crossPosition, Quaternion.identity) as GameObject;
 

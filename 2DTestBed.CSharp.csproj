@@ -76,6 +76,7 @@
     <Compile Include="Assets\_Scripts\Enemies\EnemyTank.cs" />
     <Compile Include="Assets\_Scripts\FlashBang.cs" />
     <Compile Include="Assets\_Scripts\Grenade.cs" />
+    <Compile Include="Assets\_Scripts\GrenadeButtons.cs" />
     <Compile Include="Assets\_Scripts\Gun.cs" />
     <Compile Include="Assets\_Scripts\MachineGun.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
