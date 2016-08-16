@@ -75,16 +75,29 @@ public class ShotGun : MonoBehaviour
    void Shoot()
 
     {
-        //
-        //ammo counter
-        ammo -= 2;
-        ammoLeft.text = ammo.ToString();
 
-        //kogel vertrekt van positie van Barrel
-        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+        if (ammo > 0)
+        {
+            //ammo counter
+            ammo--;
+            ammoLeft.text = ammo.ToString();
 
-        //TODO check if eject shell on players location is correct
-        Instantiate(shell, transform.position, Quaternion.identity);
+                if (ammo <= 0)
+                {
+                    ammoLeft.color = Color.red;
+                }
+
+            //kogel vertrekt van positie van Barrel
+            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+
+            //TODO check if eject shell on players location is correct
+            Instantiate(shell, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            return;
+        }
+      
     }
 }

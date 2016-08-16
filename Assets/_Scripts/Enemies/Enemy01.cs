@@ -121,6 +121,7 @@ public class Enemy01 : MonoBehaviour
 
             Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
 
+            sprite.flipY = true;
             rigid.velocity = new Vector3(50, 25, 0);
             
             //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);

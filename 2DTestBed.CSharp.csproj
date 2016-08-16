@@ -63,28 +63,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerHealthBar.cs" />
-    <Compile Include="Assets\PlayerShield.cs" />
-    <Compile Include="Assets\SelectedWeapon.cs" />
-    <Compile Include="Assets\SmokeGrenade.cs" />
-    <Compile Include="Assets\_Scripts\Buttons.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyTank.cs" />
-    <Compile Include="Assets\_Scripts\FlashBang.cs" />
-    <Compile Include="Assets\_Scripts\Grenade.cs" />
-    <Compile Include="Assets\_Scripts\GrenadeButtons.cs" />
-    <Compile Include="Assets\_Scripts\Gun.cs" />
-    <Compile Include="Assets\_Scripts\MachineGun.cs" />
-    <Compile Include="Assets\_Scripts\Player.cs" />
-    <Compile Include="Assets\_Scripts\PlayerProjectileDamage.cs" />
-    <Compile Include="Assets\_Scripts\RPG.cs" />
+    <Compile Include="Assets\_Scripts\Player\Player.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerHealthBar.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerProjectileDamage.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerShield.cs" />
+    <Compile Include="Assets\_Scripts\Player\SelectedWeapon.cs" />
     <Compile Include="Assets\_Scripts\ShellShredder.cs" />
-    <Compile Include="Assets\_Scripts\ShotGun.cs" />
-    <Compile Include="Assets\_Scripts\Sniper.cs" />
+    <Compile Include="Assets\_Scripts\Throwables\FlashBang.cs" />
+    <Compile Include="Assets\_Scripts\Throwables\Grenade.cs" />
+    <Compile Include="Assets\_Scripts\Throwables\GrenadeButtons.cs" />
+    <Compile Include="Assets\_Scripts\Throwables\SmokeGrenade.cs" />
+    <Compile Include="Assets\_Scripts\guns\Buttons.cs" />
+    <Compile Include="Assets\_Scripts\guns\Gun.cs" />
+    <Compile Include="Assets\_Scripts\guns\MachineGun.cs" />
+    <Compile Include="Assets\_Scripts\guns\RPG.cs" />
+    <Compile Include="Assets\_Scripts\guns\ShotGun.cs" />
+    <Compile Include="Assets\_Scripts\guns\Sniper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

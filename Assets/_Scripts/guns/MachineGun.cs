@@ -15,7 +15,7 @@ public class MachineGun : MonoBehaviour
     private Text ammoLeft;
 
 
-    private int ammo = 24;
+    private int ammo = 180;
     private Rigidbody2D rigidBody;
 
 
@@ -79,20 +79,34 @@ public class MachineGun : MonoBehaviour
     void Shoot()
 
     {
+
+        if (ammo >= 2)
+        {
+            //ammo counter
+            ammo-= 2;
+            ammoLeft.text = ammo.ToString();
+
+                if (ammo <= 0)
+                {
+                    ammoLeft.color = Color.red;
+                }
+
+            //kogel vertrekt van positie van Barrel
+            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+
+            //TODO check if eject shell on players location is correct
+            Instantiate(shell, transform.position, Quaternion.identity);
+
+            Invoke("SecondShot", 0.3f);
+        }
+        else
+        {
+            return;
+        }
         //TODO switch between single shot and multiple Shots
-        //ammo counter
-        ammo -= 3;
-        ammoLeft.text = ammo.ToString();
-
-        //kogel vertrekt van positie van Barrel
-        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
-
-        //TODO check if eject shell on players location is correct
-        Instantiate(shell, transform.position, Quaternion.identity);
-
-        Invoke("SecondShot", 0.3f);
-
+       
+        
     }
 
     void SecondShot()

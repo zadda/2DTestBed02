@@ -16,7 +16,7 @@ public class RPG : MonoBehaviour
     private Text ammoLeft;
 
 
-    private int ammo = 24;
+    private int ammo = 6;
     private Rigidbody2D rigidBody;
 
     private SpriteRenderer spriteGun;
@@ -90,14 +90,23 @@ public class RPG : MonoBehaviour
     void Shoot()
 
     {
-        //TODO switch between single shot and multiple Shots
-        //ammo counter
-        ammo -= 1;
-        ammoLeft.text = ammo.ToString();
+        if (ammo > 0)
+        {
+            //ammo counter
+            ammo--;
+            ammoLeft.text = ammo.ToString();
 
-        //kogel vertrekt van positie van Barrel
-
-
+                if (ammo <= 0)
+                {
+                    ammoLeft.color = Color.red;
+                }
+            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+        }
+        else
+        {
+            return;
+        }
         //        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
 
         //if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -107,10 +116,6 @@ public class RPG : MonoBehaviour
         //}
         //else
         //{
-        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+        
     }
-
-    //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
-
 }

@@ -32,13 +32,25 @@ public class Grenade : MonoBehaviour
     public void Throw()
     {
 
-        //ammo counter
-        ammo--;
-        ammoLeft.text = ammo.ToString();
+        if (ammo > 0)
+        {
+            //ammo counter
+            ammo--;
+            ammoLeft.text = ammo.ToString();
 
-        GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-        granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(180, -30, 0);
-        granaat.GetComponent<Rigidbody2D>().rotation = -25;
+            if (ammo <= 0)
+            {
+                ammoLeft.color = Color.red;
+            }
+
+            GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(180, -30, 0);
+            granaat.GetComponent<Rigidbody2D>().rotation = -25;
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

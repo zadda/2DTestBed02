@@ -86,17 +86,28 @@ public class Gun : MonoBehaviour
     {
         //Kogel vertrekt van positie van CrossHair
         //GameObject kogel = Instantiate(bullet, crossPosition, Quaternion.identity) as GameObject;
+        if (ammo > 0)
+        {
+            //ammo counter
+            ammo--;
+            ammoLeft.text = ammo.ToString();
 
-        //ammo counter
-        ammo--;
-        ammoLeft.text = ammo.ToString();
+            if (ammo <= 0)
+            {
+                ammoLeft.color = Color.red;
+            }
 
-        //kogel vertrekt van positie van Barrel
-        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(20, 0, 0);
+            //kogel vertrekt van positie van Barrel
+            GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(20, 0, 0);
 
-        //TODO check if eject shell on players location is correct
-        //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
-        Instantiate(shell, transform.position, Quaternion.identity);
+            //TODO check if eject shell on players location is correct
+            //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+            Instantiate(shell, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            return;
+        }
     }
 }
