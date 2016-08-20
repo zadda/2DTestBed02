@@ -44,7 +44,7 @@ public class Grenade : MonoBehaviour
             }
 
             GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(180, -30, 0);
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -30, 0);
             granaat.GetComponent<Rigidbody2D>().rotation = -25;
         }
         else

@@ -90,7 +90,7 @@ public class Gun : MonoBehaviour
         {
             //ammo counter
             ammo--;
-            ammoLeft.text = ammo.ToString();
+            //ammoLeft.text = ammo.ToString();
 
             if (ammo <= 0)
             {

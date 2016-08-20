@@ -29,23 +29,31 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
+    private int layer = 11;
+
+    private int mask;
+
     // Use this for initialization
     void Start()
     {
-
+        int mask = 1 << layer;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // ceaseFire true means enemy is hit by Flash grenade
         if (ceaseFire)
         {
             HitByFlashEffect();
         }
-
-
         countDowntime -= Time.deltaTime;
+
+        /*
+         * RayCasting - draw invisible line of sight, to determine if player is in sight
+         * and shoot him
+         */
+
         // check of Player in sight is
         RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 45);
 
@@ -121,15 +129,16 @@ public class Enemy01 : MonoBehaviour
 
             Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
 
+            // player komt ondersteboven
             sprite.flipY = true;
             rigid.velocity = new Vector3(50, 25, 0);
             
             //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);
-
         }
-
-
     }
+
+    //decide what to do when hit by Flash grenade, for x amount of " flip the enemy sprite to create
+    // confused behaviour
 
     void HitByFlashEffect()
     {

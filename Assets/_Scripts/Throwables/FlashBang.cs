@@ -45,7 +45,7 @@ public class FlashBang : MonoBehaviour
             }
 
             GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(180, -15, 0);
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -15, 0);
             granaat.GetComponent<Rigidbody2D>().rotation = -25;
         }
         else
