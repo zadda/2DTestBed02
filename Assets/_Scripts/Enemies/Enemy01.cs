@@ -29,7 +29,7 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
-    private int layer = 11;
+    private int layer = 10;
 
     private int mask;
 
@@ -57,9 +57,12 @@ public class Enemy01 : MonoBehaviour
         // check of Player in sight is
         RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 45);
 
-        //is er een hit, en is er genoeg tijd tussen het vorige schot?
 
-        if (hit.collider != null && countDowntime <= 0)
+
+        //is er een hit, en is er genoeg tijd tussen het vorige schot?
+        //controleer of er een hit met de player is
+
+        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Player"))
         {
             Fire();
 
