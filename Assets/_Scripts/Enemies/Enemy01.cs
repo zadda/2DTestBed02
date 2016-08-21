@@ -62,7 +62,8 @@ public class Enemy01 : MonoBehaviour
         //is er een hit, en is er genoeg tijd tussen het vorige schot?
         //controleer of er een hit met de player is
 
-        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Player"))
+        //TODO clean up function, check if hitting player or Shield tag??
+        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Shield")) //"Player"
         {
             Fire();
 
