@@ -37,9 +37,6 @@ public class Player : MonoBehaviour
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
-
-    
-
     public static float walkSpeed = 0.25f;
 
 
@@ -62,7 +59,6 @@ public class Player : MonoBehaviour
         playerX = transform.position.x;
         playerY = transform.position.y;
         Move();
-        
     }
 
     void Move()
@@ -81,9 +77,6 @@ public class Player : MonoBehaviour
             //move player right
             sprite.flipX = false;
             transform.position += Vector3.right * walkSpeed;
-
-         
-
         }
     }
 

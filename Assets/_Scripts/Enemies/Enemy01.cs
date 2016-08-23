@@ -21,7 +21,7 @@ public class Enemy01 : MonoBehaviour
     private SpriteRenderer sprite;
 
 
-    private float countDowntime = 2.35f;
+    private float countDowntime = 1.15f;
 
     public float health = 120;
 
@@ -29,14 +29,12 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
-    private int layer = 10;
-
-    private int mask;
+   
 
     // Use this for initialization
     void Start()
     {
-        int mask = 1 << layer;
+        
     }
 
     // Update is called once per frame
@@ -63,7 +61,7 @@ public class Enemy01 : MonoBehaviour
         //controleer of er een hit met de player is
 
         //TODO clean up function, check if hitting player or Shield tag??
-        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Shield")) //"Player"
+        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Player")) //"Player"
         {
             Fire();
 
@@ -81,7 +79,7 @@ public class Enemy01 : MonoBehaviour
         {
             return;
         }
-        countDowntime = 2.35f;
+        countDowntime = 1.15f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0);
