@@ -18,6 +18,10 @@ public class EnemyJet : MonoBehaviour
     private int ammo = 980;
 
     [SerializeField]
+    private float health = 750;
+
+
+    [SerializeField]
     private bool isFiring = false;
     [SerializeField]
     private bool isBombing = false;
@@ -70,6 +74,28 @@ public class EnemyJet : MonoBehaviour
         //kogel vertrekt van positie van Barrel
         GameObject bom = Instantiate(bomb, barrel2.transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
         //bom.GetComponent<Rigidbody2D>().velocity = new Vector3(-70, -25, 0);
+    }
 
+     void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject objectCollidedwith = collision.gameObject;
+
+        //get amount of damage
+
+        //check first if we are colliding by a Player Projectile 
+        //if so, get Damage value from Player Projectile
+
+        if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
+        {
+            float damage = objectCollidedwith.GetComponent<PlayerProjectileDamage>().damage;
+
+            health -= damage;
+            Destroy(objectCollidedwith);
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

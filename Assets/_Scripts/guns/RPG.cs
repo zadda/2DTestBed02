@@ -42,7 +42,7 @@ public class RPG : MonoBehaviour
         mousePOS = Input.mousePosition;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 15);
+            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
         }
 
 
@@ -101,16 +101,10 @@ public class RPG : MonoBehaviour
                 {
                     ammoLeft.color = Color.red;
                 }
+            //rotation is RPG.Z axis rotation, 
 
-            //testcode
-            //GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, transform.rotation.z)) as GameObject;
-
-            //rotation is RPG.Z axis rotation
-            //Vector3 testRichting = new Vector3(barrel.transform.position.x, barrel.transform.position.y, transform.rotation.z);
-
-            //GameObject kogel = Instantiate(bullet, testRichting, Quaternion.Euler(0f, 0f, transform.rotation.z)) as GameObject; 
-            //werkt:
-            //
+            //De Z positie van de rotation moet geplaatst worden op de Y-positie van de velocity and Quaternion Rotation /!\
+        
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
             kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z*100);
             kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, transform.rotation.z * 100, 0);
@@ -119,15 +113,5 @@ public class RPG : MonoBehaviour
         {
             return;
         }
-        //        GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, mousePOS.y / 15)) as GameObject;
-        //    kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 25, 0);
-        //}
-        //else
-        //{
-        
     }
 }
