@@ -12,6 +12,7 @@ public class RPG : MonoBehaviour
 
     [SerializeField]
     private GameObject barrel;
+
     [SerializeField]
     private Text ammoLeft;
 
@@ -100,8 +101,19 @@ public class RPG : MonoBehaviour
                 {
                     ammoLeft.color = Color.red;
                 }
+
+            //testcode
+            //GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.Euler(0f, 0f, transform.rotation.z)) as GameObject;
+
+            //rotation is RPG.Z axis rotation
+            //Vector3 testRichting = new Vector3(barrel.transform.position.x, barrel.transform.position.y, transform.rotation.z);
+
+            //GameObject kogel = Instantiate(bullet, testRichting, Quaternion.Euler(0f, 0f, transform.rotation.z)) as GameObject; 
+            //werkt:
+            //
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+            kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z*100);
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, transform.rotation.z * 100, 0);
         }
         else
         {

@@ -119,6 +119,14 @@ public class Player : MonoBehaviour
             Destroy(objectCollidedwith);
         }
 
+        //if collide with enemy bomb, move player axis -x
+
+        //if (objectCollidedwith.tag == "Bomb")
+        //{
+        //    sprite.transform.position -= new Vector3(15, 0, 0);
+        //}
+
+
         if (playerHealth <= 0)
         {
             //TODO game over or lose life

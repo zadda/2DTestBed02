@@ -12,7 +12,7 @@ public class BombExplosion : MonoBehaviour
     {
         //Instantiate(explosion, transform.position, Quaternion.identity);
         GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-        Destroy(explosie, 5f);
+        Destroy(explosie, 1.5f);
         Destroy(gameObject);
     }
 }
