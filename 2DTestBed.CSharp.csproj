@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BombExplosion.cs" />
+    <Compile Include="Assets\ConeOfVisionJet.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
