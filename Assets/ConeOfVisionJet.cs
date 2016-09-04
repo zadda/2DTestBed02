@@ -11,8 +11,15 @@ public class ConeOfVisionJet : MonoBehaviour
     [SerializeField]
     private Color colour;
 
+    [SerializeField]
+    private Color enemyDetected;
+
     private Color defaultColour;
-    // Use this for initialization
+
+   
+
+
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -22,6 +29,9 @@ public class ConeOfVisionJet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        
+        
         //Debug.Log(timeSinceDetected);
 
         if (playerDetected)
@@ -30,7 +40,7 @@ public class ConeOfVisionJet : MonoBehaviour
         }
 
 
-        if (timeSinceDetected >= 5f)
+        if (timeSinceDetected >= 0.5f)
         {
             //EnemyJet.Fire()
             Attack();
@@ -54,11 +64,17 @@ public class ConeOfVisionJet : MonoBehaviour
            // Debug.Log("cone hit detected!!");
         }
 
+        if (objectCollidedwith.tag.Equals("Enemy"))
+        {
+            sprite.color = enemyDetected;
+        }
+
     }
 
     void Attack()
     {
         timeSinceDetected = 0f;
+        EnemyJet.isBombing = true;
         Debug.Log("Attack iniated!!");
         //sprite.color.r = 55f;
         //GetComponent<SpriteRenderer>().color = 

@@ -23,8 +23,8 @@ public class EnemyJet : MonoBehaviour
 
     [SerializeField]
     private bool isFiring = false;
-    [SerializeField]
-    private bool isBombing = false;
+    //[SerializeField]
+    public static bool isBombing = false;
 
     private Vector3 target;
 
@@ -32,6 +32,10 @@ public class EnemyJet : MonoBehaviour
 
     void Update()
     {
+
+        transform.Translate(Vector3.left * 20.5f * Time.deltaTime);
+
+        //check if is Firing is true
         if (isFiring)
         {
             if (timeDelay <= 0)
