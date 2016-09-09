@@ -29,11 +29,7 @@ public class ConeOfVisionJet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         
-        
-        //Debug.Log(timeSinceDetected);
-
         if (playerDetected)
         {
             timeSinceDetected += Time.deltaTime;
@@ -75,10 +71,6 @@ public class ConeOfVisionJet : MonoBehaviour
     {
         timeSinceDetected = 0f;
         EnemyJet.isBombing = true;
-        Debug.Log("Attack iniated!!");
-        //sprite.color.r = 55f;
-        //GetComponent<SpriteRenderer>().color = 
-
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -89,8 +81,6 @@ public class ConeOfVisionJet : MonoBehaviour
         {
             playerDetected = true;
         }
-
-       
     }
 
     void OnTriggerExit2D(Collider2D collision)

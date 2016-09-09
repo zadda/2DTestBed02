@@ -52,8 +52,11 @@ public class SmokeGrenade : MonoBehaviour
 
      void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector3 positie = transform.position;
+        positie += new Vector3(0, 8, 0);
+
         //Instantiate(explosion, transform.position, Quaternion.identity);
-        GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+        GameObject explosie = Instantiate(explosion, positie, Quaternion.identity) as GameObject;
         Destroy(explosie, 10f);
         Destroy(gameObject);
     }

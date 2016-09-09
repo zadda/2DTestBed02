@@ -32,7 +32,7 @@ public class EnemyJet : MonoBehaviour
 
     void Update()
     {
-
+        //move the jet
         transform.Translate(Vector3.left * 20.5f * Time.deltaTime);
 
         //check if is Firing is true
