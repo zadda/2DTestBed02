@@ -16,7 +16,17 @@ public class SmokeGrenade : MonoBehaviour
     [SerializeField]
     private Text ammoLeft;
 
+    public static Vector3 teBombarderenPositie = new Vector3(160,0,0);
+
+    public static bool jetCalled = false;
+
+
     private int ammo = 1;
+
+    void Start()
+    {
+       // teBombarderenPositie = transform.position;
+    }
 
 
     void Update()
@@ -52,11 +62,21 @@ public class SmokeGrenade : MonoBehaviour
 
      void OnCollisionEnter2D(Collision2D collision)
     {
+        //zorgt ervoor dat de rook hoog genoeg zichtbaar is, anders deels onder de grond
         Vector3 positie = transform.position;
         positie += new Vector3(0, 8, 0);
 
         //Instantiate(explosion, transform.position, Quaternion.identity);
         GameObject explosie = Instantiate(explosion, positie, Quaternion.identity) as GameObject;
+        
+    //zet positie trigger voor jet, positie van het gameObject anders gebruiken we niet de juiste coördinaten maar die van de prefab
+    teBombarderenPositie = explosie.transform.position;
+
+        Debug.Log("Cöordinaten te bombardernPOS: " + teBombarderenPositie);
+
+        jetCalled = true;
+
+
         Destroy(explosie, 10f);
         Destroy(gameObject);
     }

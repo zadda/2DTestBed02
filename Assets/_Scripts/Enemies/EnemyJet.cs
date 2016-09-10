@@ -35,7 +35,7 @@ public class EnemyJet : MonoBehaviour
         //move the jet
         transform.Translate(Vector3.left * 20.5f * Time.deltaTime);
 
-        //check if is Firing is true
+        //check if is Firing is true + implement a time delay so no constant bombing
         if (isFiring)
         {
             if (timeDelay <= 0)
