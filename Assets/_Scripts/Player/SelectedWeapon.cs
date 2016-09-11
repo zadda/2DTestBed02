@@ -20,9 +20,15 @@ public class SelectedWeapon : MonoBehaviour
         // TODO update weapon buttons, call when mousewheel up or down??
         MouseWheelUP();
 
-      
+
 
         //Guns
+
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            selectedWeapon = "Shield";
+        }
+
         if (Input.GetKey(KeyCode.Alpha1))
         {
             selectedWeapon = "Gun";

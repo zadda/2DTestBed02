@@ -21,30 +21,32 @@ public class Buttons : MonoBehaviour
 
     }
 	
-	// Update is called once per frame
+	// zorgt ervoor dat wapen dat in gebruik is, alpha channel zichtbaar in buttons Quad
+
+
 	void Update () 
 	{
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Alpha1) || SelectedWeapon.selectedWeapon == "Gun")
         {
             ResetButtonsAlphaToBlack();
             buttonArray[0].GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.Alpha2) || SelectedWeapon.selectedWeapon == "ShotGun")
         {
             ResetButtonsAlphaToBlack();
             buttonArray[1].GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else if (Input.GetKey(KeyCode.Alpha3))
+        else if (Input.GetKey(KeyCode.Alpha3) || SelectedWeapon.selectedWeapon == "MachineGun")
         {
             ResetButtonsAlphaToBlack();
             buttonArray[2].GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else if (Input.GetKey(KeyCode.Alpha4))
+        else if (Input.GetKey(KeyCode.Alpha4) || SelectedWeapon.selectedWeapon == "Sniper")
         {
             ResetButtonsAlphaToBlack();
             buttonArray[3].GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else if (Input.GetKey(KeyCode.Alpha5))
+        else if (Input.GetKey(KeyCode.Alpha5) || SelectedWeapon.selectedWeapon == "RPG")
         {
             ResetButtonsAlphaToBlack();
             buttonArray[4].GetComponent<SpriteRenderer>().color = Color.white;

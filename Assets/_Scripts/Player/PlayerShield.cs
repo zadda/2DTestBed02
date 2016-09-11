@@ -11,7 +11,7 @@ public class PlayerShield : MonoBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-
+    Vector3 mousePOS;
 
     // Use this for initialization
     void Start () 
@@ -23,7 +23,20 @@ public class PlayerShield : MonoBehaviour
 	void Update () 
 	{
         ShieldDamageSprite();
-	}
+
+        mousePOS = Input.mousePosition;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "Shield")
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
+            
+        }
+
+        if (SelectedWeapon.selectedWeapon == "Shield")
+        {
+            transform.position = new Vector3(Player.playerX + 3, Player.playerY + 3);
+        }
+
+    }
 
     void ShieldDamageSprite()
     {

@@ -40,7 +40,7 @@ public class RPG : MonoBehaviour
         //transform.rotation = Quaternion.Euler(0f,0f, crossPosition.y);
 
         mousePOS = Input.mousePosition;
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "RPG")
         {
             transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
         }

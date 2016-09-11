@@ -53,7 +53,7 @@ public class Enemy01 : MonoBehaviour
          */
 
         // check of Player in sight is
-        RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 45);
+        RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 90); //45
 
 
 
@@ -61,7 +61,7 @@ public class Enemy01 : MonoBehaviour
         //controleer of er een hit met de player is
 
         //TODO clean up function, check if hitting player or Shield tag??
-        if (hit.collider != null && countDowntime <= 0 && hit.transform.name.Equals("Player")) //"Player"
+        if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player")) //"Player" hit.transform.name.Equals("Player")) MainPlayer
         {
             Fire();
 

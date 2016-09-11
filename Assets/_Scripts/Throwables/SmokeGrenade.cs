@@ -70,10 +70,8 @@ public class SmokeGrenade : MonoBehaviour
         GameObject explosie = Instantiate(explosion, positie, Quaternion.identity) as GameObject;
         
     //zet positie trigger voor jet, positie van het gameObject anders gebruiken we niet de juiste coördinaten maar die van de prefab
-    teBombarderenPositie = explosie.transform.position;
-
-        Debug.Log("Cöordinaten te bombardernPOS: " + teBombarderenPositie);
-
+        teBombarderenPositie = explosie.transform.position;
+        
         jetCalled = true;
 
 
