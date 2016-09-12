@@ -37,7 +37,7 @@ public class ShotGun : MonoBehaviour
 
         if (SelectedWeapon.selectedWeapon == "ShotGun")
         {
-            transform.position = new Vector3(Player.playerX + 7, Player.playerY + 4);
+            transform.position = new Vector3(Player.playerX + 0.5f, Player.playerY + 2.8f);
         }
 
         if (SelectedWeapon.selectedWeapon == "ShotGun")
@@ -67,7 +67,7 @@ public class ShotGun : MonoBehaviour
         {
 
             spriteGun.flipX = false;
-            transform.position = new Vector3(Player.playerX + 7, Player.playerY + 4);
+            transform.position = new Vector3(Player.playerX + 0.5f, Player.playerY + 2.8f);
             transform.position += Vector3.left * Player.walkSpeed;
         }
     }

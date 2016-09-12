@@ -15,11 +15,7 @@ public class ConeOfVisionJet : MonoBehaviour
     private Color enemyDetected;
 
     private Color defaultColour;
-
-   
-
-
-
+    
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();

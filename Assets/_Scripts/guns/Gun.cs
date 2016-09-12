@@ -99,7 +99,9 @@ public class Gun : MonoBehaviour
 
             //kogel vertrekt van positie van Barrel
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(20, 0, 0);
+            //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
+            kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z * 100);
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(40, transform.rotation.z * 100, 0);
 
             //TODO check if eject shell on players location is correct
             //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
