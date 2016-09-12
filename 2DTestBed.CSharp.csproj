@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Scripts\Enemies\BombExplosion.cs" />
     <Compile Include="Assets\_Scripts\Enemies\ConeOfVisionJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Enemy03.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
