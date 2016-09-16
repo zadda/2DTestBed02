@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+ * the HUD for the Grenade Quad
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class GrenadeButtons : MonoBehaviour 

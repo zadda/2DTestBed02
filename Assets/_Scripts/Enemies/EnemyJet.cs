@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+ * patrols the sky
+ * has a cone which checks for player or enemy
+ * changes color of spotlight appropriately
+ * bombs the Player and the Shield
+ */
+
+
+using UnityEngine;
 using System.Collections;
 
 public class EnemyJet : MonoBehaviour 
@@ -23,7 +31,7 @@ public class EnemyJet : MonoBehaviour
 
     [SerializeField]
     private bool isFiring = false;
-    //[SerializeField]
+    
     public static bool isBombing = false;
 
     private Vector3 target;
@@ -85,9 +93,6 @@ public class EnemyJet : MonoBehaviour
         GameObject objectCollidedwith = collision.gameObject;
 
         //get amount of damage
-
-        //check first if we are colliding by a Player Projectile 
-        //if so, get Damage value from Player Projectile
 
         if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
         {

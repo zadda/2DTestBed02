@@ -21,7 +21,7 @@ public class FlashBang : MonoBehaviour
 
     void Update()
     {
-        if (SelectedWeapon.selectedGrenade == "Flash" && Input.GetMouseButtonDown(1))
+        if (SelectedWeapon.selectedGrenade == "Flash" && Input.GetMouseButtonDown(1)) // right mouse button
         {
             Throw();
         }
@@ -60,7 +60,7 @@ public class FlashBang : MonoBehaviour
     {
         GameObject explosie = Instantiate(flash, transform.position, Quaternion.identity) as GameObject;
 
-        Destroy(explosie, 1f); // destroy explosie
+        Destroy(explosie, 1f); // destroy explosie animatie
 
         Destroy(gameObject);
     }

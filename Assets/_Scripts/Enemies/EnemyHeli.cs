@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+ * the helicopter moves around
+ * has a searchlight animation which is to check
+ * if it's detecting the Player, if so
+ * start firing
+ * Fire alternate between two barrels
+ */
+
+
+using UnityEngine;
 using System.Collections;
 
 public class EnemyHeli : MonoBehaviour 
@@ -12,6 +21,7 @@ public class EnemyHeli : MonoBehaviour
     [SerializeField]
     private GameObject barrel2;
 
+    //TODO set definitive ammo limit
     private int ammo = 980;
     [SerializeField]
     private bool isFiring = false;
@@ -36,7 +46,7 @@ public class EnemyHeli : MonoBehaviour
 
     void Shoot()
     {
-
+        // time before firing from the second barrel
         timeDelay = 0.5f;
 
         //isFiring = false;
@@ -69,9 +79,7 @@ public class EnemyHeli : MonoBehaviour
         GameObject objectCollidedwith = collision.gameObject;
 
         //get amount of damage
-
-        //check first if we are colliding by a Player Projectile 
-        //if so, get Damage value from Player Projectile
+        
 
         if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
         {

@@ -21,15 +21,13 @@ public class Sniper : MonoBehaviour
     private SpriteRenderer spriteSniper;
     private Vector3 startPosition;
 
-
-    // Use this for initialization
+    
     void Start () 
 	{
         spriteSniper = GetComponent<SpriteRenderer>();
         startPosition = transform.position;
     }
 	
-	// Update is called once per frame
 	void Update () 
 	{
        
@@ -93,8 +91,7 @@ public class Sniper : MonoBehaviour
             //kogel vertrekt van positie van Barrel
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
             kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
-
-            //TODO check if eject shell on players location is correct
+            
             Instantiate(shell, transform.position, Quaternion.identity);
         }
         else

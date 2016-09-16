@@ -10,9 +10,9 @@ public class BombExplosion : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Instantiate(explosion, transform.position, Quaternion.identity);
+        //show explosion animation when an enemy bomb hits the player
         GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
-        Destroy(explosie, 1.5f);
-        Destroy(gameObject);
+        Destroy(explosie, 1.5f); // explosie is the animation
+        Destroy(gameObject); //gameObject is the bomb
     }
 }

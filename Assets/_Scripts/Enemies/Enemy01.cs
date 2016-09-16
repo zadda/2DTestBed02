@@ -3,11 +3,14 @@ using System.Collections;
 
 public class Enemy01 : MonoBehaviour
 {
+
+    //necessary for Raycast hit detection
     [SerializeField]
     private Transform lineStart;
     [SerializeField]
     private Transform lineEnd;
 
+    //Ammo prefabs and start point
     [SerializeField]
     private GameObject bullet;
 
@@ -17,10 +20,11 @@ public class Enemy01 : MonoBehaviour
     [SerializeField]
     private Transform barrel;
 
+    //for dealing with Grenade explosions
     [SerializeField]
     private SpriteRenderer sprite;
 
-
+    // time befor shooting again
     private float countDowntime = 1.15f;
 
     public float health = 120;
@@ -29,13 +33,6 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
-   
-
-    // Use this for initialization
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -55,12 +52,10 @@ public class Enemy01 : MonoBehaviour
         // check of Player in sight is
         RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 90); //45
 
-
-
         //is er een hit, en is er genoeg tijd tussen het vorige schot?
         //controleer of er een hit met de player is
 
-        //TODO clean up function, check if hitting player or Shield tag??
+        
         if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player")) //"Player" hit.transform.name.Equals("Player")) MainPlayer
         {
             Fire();
@@ -82,25 +77,26 @@ public class Enemy01 : MonoBehaviour
         countDowntime = 1.15f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0);
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0); // bullet speed in -X position
 
         //beweeg enemy naar Player toe
 
         transform.position += new Vector3(-3f, 0f);
 
         //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
+        // geen as GameObject want we doen er niets mee in code, wordt vernietigd door shredder
         Instantiate(shell, transform.position, Quaternion.identity);
     }
 
    
 
-    public void OnTriggerEnter2D(Collider2D collision)
+     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
 
         //get amount of damage
 
-        //check first if we are colliding by a Player Projectile 
+        //check first if we are colliding with a Player Projectile 
         //if so, get Damage value from Player Projectile
 
         if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
@@ -108,9 +104,10 @@ public class Enemy01 : MonoBehaviour
             float damage = objectCollidedwith.GetComponent<PlayerProjectileDamage>().damage;
 
             health -= damage;
-            Destroy(objectCollidedwith);
+            Destroy(objectCollidedwith); // destroy Player projectile
         }
 
+        //kill the enemy
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -125,7 +122,7 @@ public class Enemy01 : MonoBehaviour
         }
 
         // Hit by Grenade
-
+        //TODO rigidbody AddForce ?
         if (objectCollidedwith.tag == "Grenade")
         {
 
@@ -146,6 +143,7 @@ public class Enemy01 : MonoBehaviour
     {
         flashGrenadeDuration -= Time.deltaTime;
 
+        //keep flipping the enemy
         if (flashGrenadeDuration >= 0)
         {
             sprite.flipX = true;

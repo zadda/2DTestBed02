@@ -7,10 +7,11 @@ public class CheckShieldPlayerCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
-
-        //get amount of damage
-
-        if (objectCollidedwith.tag == "Player" || objectCollidedwith.tag == "ConeHitArea")
+        
+        if (objectCollidedwith.tag == "Player" || objectCollidedwith.tag == "ConeHitArea") // ConeHitArea is the collider on the Player's feet
+ 
+                                                                                                      // which is also used for the enemy cone detection
+        //stop attacking and moving of enemy towards Player
         {
             Enemy03.stopAttacking = true;
 

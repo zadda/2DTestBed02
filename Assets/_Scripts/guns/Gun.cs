@@ -19,18 +19,17 @@ public class Gun : MonoBehaviour
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
+    //TODO set to infinite or really high, but keep an ammount for 'reloading' of gun
     private int ammo = 18;
+    
 
-
-    // Use this for initialization
     void Start()
     {
         spriteGun = GetComponent<SpriteRenderer>();
         barrel = GameObject.FindGameObjectWithTag("Barrel");
         startPosition = transform.position;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -59,13 +58,15 @@ public class Gun : MonoBehaviour
        
     }
 
+    //TODO update movement
+
     void MoveLeftRight()
     {
         //move left
         if (Input.GetKey(KeyCode.Q))
         {
 
-            // move sniper Rifle 
+            // move Gun
             spriteGun.flipX = true;
             transform.position = new Vector3(Player.playerX -1.5f, Player.playerY + 4);
             transform.position += Vector3.left * Player.walkSpeed;
@@ -81,7 +82,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void Shoot() //Vector3 crossPosition
+    void Shoot() 
 
     {
         //Kogel vertrekt van positie van CrossHair
@@ -90,7 +91,6 @@ public class Gun : MonoBehaviour
         {
             //ammo counter
             ammo--;
-            //ammoLeft.text = ammo.ToString();
 
             if (ammo <= 0)
             {
@@ -103,7 +103,7 @@ public class Gun : MonoBehaviour
             kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z * 100);
             kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(40, transform.rotation.z * 100, 0);
 
-            //TODO check if eject shell on players location is correct
+            //alternatively: only when we need to do something with the shell afterwards
             //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
             Instantiate(shell, transform.position, Quaternion.identity);
         }

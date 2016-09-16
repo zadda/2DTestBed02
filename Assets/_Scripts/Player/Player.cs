@@ -27,27 +27,23 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SmokeGrenade smoke;
 
-
-    private float maxDistanceCrossGunX = 25;
-    private float maxDistanceCrossGunY = 25;
+    
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
     public static float walkSpeed = 0.25f;
 
 
-    // Use this for initialization
+   
     void Start () 
 	{
         sprite = GetComponent<SpriteRenderer>();
 
         gun.transform.position = new Vector3(11 - 1.5f, 3 + 4);
-
-        //start positie CrossHair
-        //crosshair.transform.position = new Vector3(10, 10);
+        
     }
 	
-	// Update is called once per frame
+	
 	void Update () 
 	{
 
@@ -80,7 +76,7 @@ public class Player : MonoBehaviour
 
     // Enemy Projectile detection
 
-    public void OnTriggerEnter2D(Collider2D collision)
+     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
 
@@ -97,6 +93,7 @@ public class Player : MonoBehaviour
             Destroy(objectCollidedwith);
         }
 
+        //TODO player hit by bomb addForce
         //if collide with enemy bomb, move player axis -x
 
         //if (objectCollidedwith.tag == "Bomb")

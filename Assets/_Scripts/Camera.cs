@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+ * Camera follows the Player with OffSet
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class Camera : MonoBehaviour 

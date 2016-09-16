@@ -36,9 +36,10 @@ public class RPG : MonoBehaviour
     void Update()
     {
 
-        //beweeg geweer Z-axis afhankelijk van positie Y
+        //beweeg RPG rotation Z-axis afhankelijk van positie Y
         //transform.rotation = Quaternion.Euler(0f,0f, crossPosition.y);
 
+        //allow aiming of RPG
         mousePOS = Input.mousePosition;
         if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "RPG")
         {
@@ -104,6 +105,7 @@ public class RPG : MonoBehaviour
             //rotation is RPG.Z axis rotation, 
 
             //De Z positie van de rotation moet geplaatst worden op de Y-positie van de velocity and Quaternion Rotation /!\
+            //rotate the Projectile depending on rotation of RPG
         
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
             kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z*100);

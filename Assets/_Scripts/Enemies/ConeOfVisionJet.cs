@@ -9,7 +9,7 @@ public class ConeOfVisionJet : MonoBehaviour
 
     private SpriteRenderer sprite;
     [SerializeField]
-    private Color colour;
+    private Color playerDetectedColour;
 
     [SerializeField]
     private Color enemyDetected;
@@ -50,7 +50,7 @@ public class ConeOfVisionJet : MonoBehaviour
 
         if (objectCollidedwith.transform.name.Equals("ConeHitArea"))
         {
-            sprite.color = colour;
+            sprite.color = playerDetectedColour;
             
             playerDetected = true;
            // Debug.Log("cone hit detected!!");

@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿
+/*
+ * similar to Enemy01.cs
+ * commented more in depth there
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class Enemy03 : MonoBehaviour
@@ -29,16 +35,8 @@ public class Enemy03 : MonoBehaviour
     private bool ceaseFire = false;
 
     private float flashGrenadeDuration = 5;
-
-   
-
-    // Use this for initialization
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
+    
     void Update()
     {
         // ceaseFire true means enemy is hit by Flash grenade
@@ -69,15 +67,10 @@ public class Enemy03 : MonoBehaviour
         //is er een hit, en is er genoeg tijd tussen het vorige schot?
         //controleer of er een hit met de player is
 
-        //TODO clean up function, check if hitting player or Shield tag??
-        if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player")) //"Player" hit.transform.name.Equals("Player")) MainPlayer
+        //check if hitting player or Shield tag??
+        if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player"))
         {
             Fire();
-
-            // TODO RayCast Example
-            Debug.DrawRay(lineStart.position, Vector3.left * 45f, Color.green);
-            
-            //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
         }
     }
 
@@ -91,8 +84,6 @@ public class Enemy03 : MonoBehaviour
         countDowntime = 1.15f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;
-        //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0);
-        //kogel.transform.rotation = Quaternion.Euler(0, 0, barrel.rotation.z * 100+5);
         kogel.transform.rotation = Quaternion.Euler(0, 0, 351);
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-50, barrel.rotation.z * 100+2, 0);
 
@@ -106,14 +97,9 @@ public class Enemy03 : MonoBehaviour
 
    
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
-
-        //get amount of damage
-
-        //check first if we are colliding by a Player Projectile 
-        //if so, get Damage value from Player Projectile
 
         if (objectCollidedwith.GetComponent<PlayerProjectileDamage>())
         {
@@ -146,8 +132,6 @@ public class Enemy03 : MonoBehaviour
             // player komt ondersteboven
             sprite.flipY = true;
             rigid.velocity = new Vector3(50, 25, 0);
-            
-            //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);
         }
     }
 

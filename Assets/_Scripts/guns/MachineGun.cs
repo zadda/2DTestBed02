@@ -22,14 +22,14 @@ public class MachineGun : MonoBehaviour
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
-    // Use this for initialization
+    
     void Start()
     {
         spriteGun = GetComponent<SpriteRenderer>();
         startPosition = transform.position;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
       
@@ -115,7 +115,7 @@ public class MachineGun : MonoBehaviour
         GameObject kogel2 = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
         kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
 
-        //TODO check if eject shell on players location is correct
+      
         Instantiate(shell, transform.position, Quaternion.identity);
 
     }

@@ -12,18 +12,13 @@ public class PlayerShield : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     Vector3 mousePOS;
-
-    // Use this for initialization
-    void Start () 
-	{
-       
-    }
-	
-	// Update is called once per frame
+    
 	void Update () 
 	{
         ShieldDamageSprite();
 
+
+        //rotate SHIELD when pressing L Shift
         mousePOS = Input.mousePosition;
         if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "Shield")
         {
@@ -38,6 +33,8 @@ public class PlayerShield : MonoBehaviour
 
     }
 
+
+    //change the sprite or Appearance of the shield depending on damage taken
     void ShieldDamageSprite()
     {
         if (health <= 200 && health > 150)
@@ -61,8 +58,8 @@ public class PlayerShield : MonoBehaviour
 
         //get amount of damage
 
-        //check first if we are colliding by a Player Projectile 
-        //if so, get Damage value from Player Projectile
+        //check first if we are colliding with Enemy Projectile
+        //if so, get Damage value from EnemyProjectile
 
         if (objectCollidedwith.GetComponent<EnemyProjectileDamage>())
         {
@@ -74,9 +71,8 @@ public class PlayerShield : MonoBehaviour
 
         if (health <= 0)
         {
-            //TODO game over or lose life
+            //TODO destroy SHIELD when max damage taken?
             //Destroy(gameObject);
         }
     }
-
 }

@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*
+ * This is the HUD which is implemented as a Quad
+ * that contains the selectable WEAPONS
+ * this listens in the background if a key (1-5) is pressed
+ * that accounts for a specific weapon
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class Buttons : MonoBehaviour 
