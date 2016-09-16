@@ -24,6 +24,7 @@ public class Enemy03 : MonoBehaviour
     private float countDowntime = 1.15f;
 
     public float health = 200;
+    public static bool stopAttacking = false;
 
     private bool ceaseFire = false;
 
@@ -46,6 +47,14 @@ public class Enemy03 : MonoBehaviour
             HitByFlashEffect();
         }
         countDowntime -= Time.deltaTime;
+
+        //if we are about to collide with player or Shield, stop moving and shooting
+        // TODO switch to melee combat?
+        if (stopAttacking)
+        {
+            return;
+        }
+
 
         /*
          * RayCasting - draw invisible line of sight, to determine if player is in sight
@@ -85,7 +94,7 @@ public class Enemy03 : MonoBehaviour
         //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0);
         //kogel.transform.rotation = Quaternion.Euler(0, 0, barrel.rotation.z * 100+5);
         kogel.transform.rotation = Quaternion.Euler(0, 0, 351);
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, barrel.rotation.z * 100+2, 0);
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-50, barrel.rotation.z * 100+2, 0);
 
         //beweeg enemy naar Player toe
 

@@ -10,10 +10,6 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     
     [SerializeField]
-    private GameObject crosshair;
-   
-
-    [SerializeField]
     private Gun gun;
     [SerializeField]
     private ShotGun shotgun;
@@ -79,25 +75,7 @@ public class Player : MonoBehaviour
             transform.position += Vector3.right * walkSpeed;
         }
     }
-
-    void MoveCrossHairGun()
-    {
-
-        //Move Gun Z rotation
-        //TODO maxDistance gebruiken
-        // CrossHair with HandGun
-        Vector3 crossPosition = new Vector3(Input.mousePosition.x / 16, Input.mousePosition.y / 16);
-
-        if (crossPosition.x <= transform.position.x + maxDistanceCrossGunX && crossPosition.y <= maxDistanceCrossGunY)
-        {
-            crosshair.transform.position = crossPosition;
-
-            // rotate Z of gun
-            //Debug.Log(crossPosition.y);
-            
-         //gun.transform.rotation = new Quaternion(0f, 0f, crossPosition.y/60,0f);
-        }
-    }
+    
     
 
     // Enemy Projectile detection
