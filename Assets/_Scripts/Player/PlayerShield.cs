@@ -25,7 +25,7 @@ public class PlayerShield : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
             
         }
-
+        // follow the Player's movement
         if (SelectedWeapon.selectedWeapon == "Shield")
         {
             transform.position = new Vector3(Player.playerX + 3, Player.playerY + 3);

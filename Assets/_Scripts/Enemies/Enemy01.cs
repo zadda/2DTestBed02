@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Enemy01 : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Enemy01 : MonoBehaviour
     [SerializeField]
     private Transform barrel;
 
+    [SerializeField]
+    private GameObject flares;
+
     //for dealing with Grenade explosions
     [SerializeField]
     private SpriteRenderer sprite;
@@ -27,12 +31,14 @@ public class Enemy01 : MonoBehaviour
     // time befor shooting again
     private float countDowntime = 1.15f;
 
-    public float health = 120;
+    [SerializeField]
+    private float health = 120;
 
     private bool ceaseFire = false;
 
     private float flashGrenadeDuration = 5;
 
+    public static Vector3 enemyPosition;
 
     // Update is called once per frame
     void Update()
@@ -64,6 +70,32 @@ public class Enemy01 : MonoBehaviour
             Debug.DrawRay(lineStart.position, Vector3.left * 45f, Color.green);
             
             //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
+        }
+
+        CheckHealth();
+
+    }
+
+    void CheckHealth()
+    {
+        
+
+        if (health <= 50 && EnemyHeli.heliCalled == false)
+        {
+            // launch Flare and call HeliSupport
+           EnemyHeli.heliCalled = true;
+
+            enemyPosition = transform.position;
+
+            ceaseFire = true;
+            sprite.flipX = true;
+
+            GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
+            //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
+             flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
+
+            //move player
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
     }
 

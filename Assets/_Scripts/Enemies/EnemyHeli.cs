@@ -31,8 +31,24 @@ public class EnemyHeli : MonoBehaviour
 
     private float timeDelay = 0f;
 
+    public static bool heliCalled = false;
+
+
+
     void Update()
     {
+        if (heliCalled == true && transform.position.x >= Enemy01.enemyPosition.x)
+        {
+            transform.Translate(Vector3.left * 30.5f * Time.deltaTime);
+        }
+
+        if (transform.position.x <= Enemy01.enemyPosition.x)
+        {
+            isFiring = true;
+        }
+
+
+
         if (isFiring)
         {
             if (timeDelay <= 0)

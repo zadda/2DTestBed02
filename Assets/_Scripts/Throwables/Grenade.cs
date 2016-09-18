@@ -44,8 +44,8 @@ public class Grenade : MonoBehaviour
             }
 
             GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -30, 0);
-            granaat.GetComponent<Rigidbody2D>().rotation = -25;
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -30, 0); // 120,-30,0
+            granaat.GetComponent<Rigidbody2D>().rotation = -25; // -25
         }
         else
         {
@@ -55,6 +55,7 @@ public class Grenade : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        
         // instantiate as GameObject anders kunnen we het niet verwijderen omdat het een prefab is
         GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
 
