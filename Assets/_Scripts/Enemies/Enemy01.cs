@@ -40,6 +40,12 @@ public class Enemy01 : MonoBehaviour
 
     public static Vector3 enemyPosition;
 
+    public static bool defensivePositionReached;
+    public static Transform defensiveObstacle;
+
+    private bool stopMoving;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -61,14 +67,14 @@ public class Enemy01 : MonoBehaviour
         //is er een hit, en is er genoeg tijd tussen het vorige schot?
         //controleer of er een hit met de player is
 
-        
+
         if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player")) //"Player" hit.transform.name.Equals("Player")) MainPlayer
         {
             Fire();
 
             // TODO RayCast Example
             Debug.DrawRay(lineStart.position, Vector3.left * 45f, Color.green);
-            
+
             //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
         }
 
@@ -78,12 +84,12 @@ public class Enemy01 : MonoBehaviour
 
     void CheckHealth()
     {
-        
+
 
         if (health <= 50 && EnemyHeli.heliCalled == false)
         {
             // launch Flare and call HeliSupport
-           EnemyHeli.heliCalled = true;
+            EnemyHeli.heliCalled = true;
 
             enemyPosition = transform.position;
 
@@ -92,10 +98,31 @@ public class Enemy01 : MonoBehaviour
 
             GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
             //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
-             flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
+            flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
 
-            //move player
+            //move enemy
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
+        }
+
+        DefensivePositionReached();
+    }
+
+    void DefensivePositionReached()
+    {
+
+        Rigidbody2D rBody = GetComponent<Rigidbody2D>();
+
+        
+
+        if (defensivePositionReached == true && transform.position.x >= defensiveObstacle.position.x +10)
+        {
+            rBody.velocity = new Vector3(0, 0, 0);
+           // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            
+            sprite.flipX = false;
+            ceaseFire = false;
+            defensivePositionReached = false;
+            stopMoving = true;
         }
     }
 
@@ -113,16 +140,20 @@ public class Enemy01 : MonoBehaviour
 
         //beweeg enemy naar Player toe
 
-        transform.position += new Vector3(-3f, 0f);
+        if (!stopMoving)
+        {
+            transform.position += new Vector3(-3f, 0f);
+        }
+        
 
         //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
         // geen as GameObject want we doen er niets mee in code, wordt vernietigd door shredder
         Instantiate(shell, transform.position, Quaternion.identity);
     }
 
-   
+    
 
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
 
@@ -163,7 +194,7 @@ public class Enemy01 : MonoBehaviour
             // player komt ondersteboven
             sprite.flipY = true;
             rigid.velocity = new Vector3(50, 25, 0);
-            
+
             //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);
         }
     }

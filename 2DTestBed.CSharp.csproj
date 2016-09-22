@@ -74,6 +74,7 @@
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyTank.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Obstacles.cs" />
     <Compile Include="Assets\_Scripts\Enemies\SearchLight.cs" />
     <Compile Include="Assets\_Scripts\Player\Player.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerHealthBar.cs" />
