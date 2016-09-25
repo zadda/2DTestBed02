@@ -34,6 +34,11 @@ public class Enemy01 : MonoBehaviour
     [SerializeField]
     private float health = 120;
 
+    [SerializeField]
+    private GameObject healthBar;
+
+    private SpriteRenderer healthSprite;
+
     private bool ceaseFire = false;
 
     private float flashGrenadeDuration = 5;
@@ -77,6 +82,8 @@ public class Enemy01 : MonoBehaviour
 
             //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
         }
+
+        healthBar.transform.localScale = new Vector3(health / 100, 1, 1);
 
         CheckHealth();
 
