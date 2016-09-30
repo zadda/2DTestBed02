@@ -29,6 +29,9 @@ public class EnemyHeli : MonoBehaviour
     [SerializeField]
     private float health = 500;
 
+    [SerializeField]
+    private GameObject healthBar;
+
     private float timeDelay = 0f;
 
     public static bool heliCalled = false;
@@ -46,8 +49,7 @@ public class EnemyHeli : MonoBehaviour
         {
             isFiring = true;
         }
-
-
+        
 
         if (isFiring)
         {
@@ -58,6 +60,10 @@ public class EnemyHeli : MonoBehaviour
 
             timeDelay -= Time.deltaTime;
         }
+
+        //update healthbar
+        healthBar.transform.localScale = new Vector3(health / 300 , 1, 1);
+
     }
 
     void Shoot()

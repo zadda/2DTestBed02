@@ -45,7 +45,7 @@ public class FlashBang : MonoBehaviour
             }
 
             GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -15, 0);
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -11, 0);
             granaat.GetComponent<Rigidbody2D>().rotation = -25;
         }
         else
@@ -57,6 +57,15 @@ public class FlashBang : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject explosie = Instantiate(flash, transform.position, Quaternion.identity) as GameObject;
+
+        Destroy(explosie, 1f); // destroy explosie animatie
+
+        Destroy(gameObject);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject explosie = Instantiate(flash, transform.position, Quaternion.identity) as GameObject;
 

@@ -55,7 +55,19 @@ public class Grenade : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+
+        // instantiate as GameObject anders kunnen we het niet verwijderen omdat het een prefab is
+        GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
+
+        Destroy(explosie, 1f); // destroy explosie
+
+        Destroy(gameObject); // destroy Grenade
+    }
+
+    //added so that grenade explodes when hitting enemy
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+
         // instantiate as GameObject anders kunnen we het niet verwijderen omdat het een prefab is
         GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
 

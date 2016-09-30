@@ -28,6 +28,8 @@ public class EnemyJet : MonoBehaviour
     [SerializeField]
     private float health = 750;
 
+    [SerializeField]
+    private GameObject healthBar;
 
     [SerializeField]
     private bool isFiring = false;
@@ -57,6 +59,9 @@ public class EnemyJet : MonoBehaviour
         {
             DropBomb();
         }
+
+        healthBar.transform.localScale = new Vector3(health / 500, 1, 1);
+
     }
 
     void Shoot()
