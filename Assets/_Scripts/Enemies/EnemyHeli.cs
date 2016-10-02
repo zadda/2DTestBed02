@@ -62,7 +62,7 @@ public class EnemyHeli : MonoBehaviour
         }
 
         //update healthbar
-        healthBar.transform.localScale = new Vector3(health / 300 , 1, 1);
+        healthBar.transform.localScale = new Vector3(health / 500 , 1, 1);
 
     }
 
