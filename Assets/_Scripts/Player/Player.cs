@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour 
+public class Player : MonoBehaviour
 {
 
     public static float playerHealth = 500;
-    
+
 
     private SpriteRenderer sprite;
-    
+
     [SerializeField]
     private Gun gun;
     [SerializeField]
@@ -27,25 +27,32 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SmokeGrenade smoke;
 
-    
+    [SerializeField]
+    private SpriteRenderer spriteColour;
+
+    [SerializeField]
+    private Color colour;
+
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
     public static float walkSpeed = 0.25f;
 
+    private Color startKleur;
+    private bool hitByGas = false;
 
-   
-    void Start () 
-	{
+    void Start()
+    {
         sprite = GetComponent<SpriteRenderer>();
 
         gun.transform.position = new Vector3(11 - 1.5f, 3 + 4);
-        
+        startKleur = spriteColour.color;
+
     }
-	
-	
-	void Update () 
-	{
+
+
+    void Update()
+    {
 
         //updates the position
         playerX = transform.position.x;
@@ -57,26 +64,69 @@ public class Player : MonoBehaviour
     {
         //movement
 
-        if (Input.GetKey(KeyCode.Q))
+        if (hitByGas)
         {
-            //move player
-            sprite.flipX = true;
-            transform.position += Vector3.left * walkSpeed;
+            if (Input.GetButton("Right"))
+            {
+                //move player
+                sprite.flipX = true;
+                transform.position += Vector3.left * walkSpeed;
+            }
+
+
+            //if (Input.GetButton("Left"))
+
+
+            if (Input.GetButton("Left"))
+            {
+                //move player right
+                sprite.flipX = false;
+                transform.position += Vector3.right * walkSpeed;
+            }
         }
 
-        if (Input.GetKey(KeyCode.D))
+//        return;
+
+        if (!hitByGas)
         {
-            //move player right
-            sprite.flipX = false;
-            transform.position += Vector3.right * walkSpeed;
+            if (Input.GetButton("Left"))
+            {
+                //move player
+                sprite.flipX = true;
+                transform.position += Vector3.left * walkSpeed;
+            }
+
+
+            //if (Input.GetButton("Left"))
+
+
+            if (Input.GetButton("Right"))
+            {
+                //move player right
+                sprite.flipX = false;
+                transform.position += Vector3.right * walkSpeed;
+            }
         }
+
+       
     }
-    
-    
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject objectCollidedwith = collision.gameObject;
+        
+
+    }
+
+    //gas grenade detection
+    //TODO add effect of grenade, invert movement keys, give player green colour:
+
+
+
 
     // Enemy Projectile detection
 
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject objectCollidedwith = collision.gameObject;
 
@@ -93,9 +143,19 @@ public class Player : MonoBehaviour
             Destroy(objectCollidedwith);
         }
 
+        if (objectCollidedwith.tag == "GasGrenade")
+        {
+            hitByGas = true;
+            Debug.Log("Geraakt door gasgranaat");
+            spriteColour.color = colour;
+        }
+
+
+        // #######################################################
         //TODO player hit by bomb addForce
         //if collide with enemy bomb, move player axis -x
-
+        // /!\ probleem camera volgt speler, tijdelijk uitschakelen?
+        // #######################################################
         //if (objectCollidedwith.tag == "Bomb")
         //{
         //    sprite.transform.position -= new Vector3(15, 0, 0);

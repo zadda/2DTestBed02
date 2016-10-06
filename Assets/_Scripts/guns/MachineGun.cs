@@ -59,7 +59,7 @@ public class MachineGun : MonoBehaviour
     void MoveLeftRight()
     {
         //move left
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetButton("Left"))
         {
             spriteGun.flipX = true;
             transform.position = new Vector3(Player.playerX - 1, Player.playerY + 5);
@@ -67,7 +67,7 @@ public class MachineGun : MonoBehaviour
         }
 
         // move right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetButton("Right"))
         {
 
             spriteGun.flipX = false;

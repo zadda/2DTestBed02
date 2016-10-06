@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
     void MoveLeftRight()
     {
         //move left
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetButton("Left"))
         {
 
             // move Gun
@@ -73,7 +73,7 @@ public class Gun : MonoBehaviour
         }
 
         // move right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetButton("Right"))
         {
 
             spriteGun.flipX = false;

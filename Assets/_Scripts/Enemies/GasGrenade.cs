@@ -33,7 +33,7 @@ public class GasGrenade : MonoBehaviour
        
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //zorgt ervoor dat de rook hoog genoeg zichtbaar is, anders deels onder de grond
         Vector3 positie = transform.position;

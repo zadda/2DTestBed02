@@ -56,7 +56,7 @@ public class Sniper : MonoBehaviour
     void MoveLeftRight()
     {
         //move left
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetButton("Left"))
         {
 
             // move sniper Rifle 
@@ -66,7 +66,7 @@ public class Sniper : MonoBehaviour
         }
 
         // move right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetButton("Right"))
         {
 
             spriteSniper.flipX = false;
