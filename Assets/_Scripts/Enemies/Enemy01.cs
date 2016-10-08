@@ -50,7 +50,7 @@ public class Enemy01 : MonoBehaviour
 
     private bool stopMoving;
 
-
+    int flaresFired = 0;
     // Update is called once per frame
     void Update()
     {
@@ -91,23 +91,27 @@ public class Enemy01 : MonoBehaviour
 
     void CheckHealth()
     {
-
-
-        if (health <= 50 && EnemyHeli.heliCalled == false)
+        
+        if (health <= 50 && flaresFired == 0)
         {
-            // launch Flare and call HeliSupport
-            EnemyHeli.heliCalled = true;
+            //make sure Heli can only be called once for now
+            if (EnemyHeli.heliCalled == false )
+            {
+                
+                EnemyHeli.heliCalled = true;
 
+                flaresFired++;
+                // launch Flare and call HeliSupport
+                GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
+                //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
+                flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
+            }
+            
             enemyPosition = transform.position;
 
+            //make enemy run away and stop attacking
             ceaseFire = true;
             sprite.flipX = true;
-
-            GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
-            //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
-            flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
-
-            //move enemy
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
 
@@ -123,9 +127,11 @@ public class Enemy01 : MonoBehaviour
 
         if (defensivePositionReached == true && transform.position.x >= defensiveObstacle.position.x +10)
         {
+            //stop enemy from moving
             rBody.velocity = new Vector3(0, 0, 0);
            // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
             
+            //resume attacking Player
             sprite.flipX = false;
             ceaseFire = false;
             defensivePositionReached = false;

@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Color colour;
 
+    [SerializeField]
+    private SpriteRenderer gasMask;
+
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
@@ -53,6 +56,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButton("GasMask"))
+        {
+           gasMask.enabled = true;
+        }
+
+        if(Input.GetButton("GasMaskOff"))
+        {
+            gasMask.enabled = false;
+        }
 
         //updates the position
         playerX = transform.position.x;
@@ -72,11 +84,6 @@ public class Player : MonoBehaviour
                 sprite.flipX = true;
                 transform.position += Vector3.left * walkSpeed;
             }
-
-
-            //if (Input.GetButton("Left"))
-
-
             if (Input.GetButton("Left"))
             {
                 //move player right
@@ -84,9 +91,7 @@ public class Player : MonoBehaviour
                 transform.position += Vector3.right * walkSpeed;
             }
         }
-
-//        return;
-
+        
         if (!hitByGas)
         {
             if (Input.GetButton("Left"))
@@ -111,12 +116,12 @@ public class Player : MonoBehaviour
        
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject objectCollidedwith = collision.gameObject;
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    GameObject objectCollidedwith = collision.gameObject;
         
 
-    }
+    //}
 
     //gas grenade detection
     //TODO add effect of grenade, invert movement keys, give player green colour:
@@ -143,7 +148,7 @@ public class Player : MonoBehaviour
             Destroy(objectCollidedwith);
         }
 
-        if (objectCollidedwith.tag == "GasGrenade")
+        if (objectCollidedwith.tag == "GasGrenade" && gasMask.enabled == false)
         {
             hitByGas = true;
             Debug.Log("Geraakt door gasgranaat");

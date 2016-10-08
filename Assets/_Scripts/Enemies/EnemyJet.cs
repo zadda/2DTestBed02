@@ -89,7 +89,8 @@ public class EnemyJet : MonoBehaviour
     {
         isBombing = false;
         //kogel vertrekt van positie van Barrel
-        GameObject bom = Instantiate(bomb, barrel2.transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
+        //GameObject bom = Instantiate(bomb, barrel2.transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
+        Instantiate(bomb, barrel2.transform.position, Quaternion.Euler(0f, 0f, 0f)); //TODO check of correct werkt
         //bom.GetComponent<Rigidbody2D>().velocity = new Vector3(-70, -25, 0);
     }
 

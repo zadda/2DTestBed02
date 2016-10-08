@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Enemy03Grenade.cs" />
     <Compile Include="Assets\LaserDotGreen.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\BombExplosion.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Assets\_Scripts\Enemies\ConeOfVisionJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy03.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Enemy03Grenade.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
