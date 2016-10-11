@@ -12,33 +12,34 @@ using System.Collections;
 public class EnemyJet : MonoBehaviour 
 {
 
+    //expose GameObjects
     [SerializeField]
     private GameObject rocket;
     [SerializeField]
     private GameObject bomb;
-
     [SerializeField]
     private GameObject barrel;
-
     [SerializeField]
     private GameObject barrel2;
+    [SerializeField]
+    private GameObject healthBar;
 
     private int ammo = 980;
 
+    //Health
     [SerializeField]
     private float health = 750;
 
     [SerializeField]
-    private GameObject healthBar;
-
-    [SerializeField]
     private bool isFiring = false;
-    
-    public static bool isBombing = false;
 
     private Vector3 target;
 
     private float timeDelay = 0f;
+
+    public static bool isBombing = false;
+
+   
 
     void Update()
     {
@@ -60,7 +61,7 @@ public class EnemyJet : MonoBehaviour
             DropBomb();
         }
 
-        healthBar.transform.localScale = new Vector3(health / 500, 1, 1);
+        healthBar.transform.localScale = new Vector3(health / 750, 1, 1);
 
     }
 

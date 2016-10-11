@@ -49,13 +49,25 @@ public class Enemy03Grenade : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
+        RaycastHit2D hit = Physics2D.Raycast(lineStart.position, Vector3.left, 65); //45
+
+        //is er een hit, en is er genoeg tijd tussen het vorige schot?
+        //controleer of er een hit met de player is
+
+
+        if (hit.collider != null && hit.transform.tag.Equals("Player") && timerCountdown <= 0) //"Player" hit.transform.name.Equals("Player")) MainPlayer
+        {
+            Fire();
+        }
+
         timerCountdown -= Time.deltaTime;
 
 
-        if (!grenadeFired && timerCountdown <= 0)
-        {
-           Fire();
-        }
+        //if (!grenadeFired && timerCountdown <= 0)
+        //{
+        //   Fire();
+        //}
         healthBar.transform.localScale = new Vector3(health / 200, 1, 1);
 
         CheckHealth();

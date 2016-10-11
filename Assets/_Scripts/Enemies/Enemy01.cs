@@ -31,13 +31,13 @@ public class Enemy01 : MonoBehaviour
     // time befor shooting again
     private float countDowntime = 1.15f;
 
+    //health
     [SerializeField]
     private float health = 120;
-
     [SerializeField]
     private GameObject healthBar;
 
-    private SpriteRenderer healthSprite;
+    //private SpriteRenderer healthSprite;
 
     private bool ceaseFire = false;
 
@@ -95,18 +95,19 @@ public class Enemy01 : MonoBehaviour
         if (health <= 50 && flaresFired == 0)
         {
             //make sure Heli can only be called once for now
-            if (EnemyHeli.heliCalled == false )
-            {
+            //TODO decide when allow enemy to call Heli
+            //if (EnemyHeli.heliCalled == false )
+            //{
                 
-                EnemyHeli.heliCalled = true;
+            //    EnemyHeli.heliCalled = true;
 
-                flaresFired++;
-                // launch Flare and call HeliSupport
-                GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
-                //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
-                flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
-            }
-            
+            //    flaresFired++;
+            //    // launch Flare and call HeliSupport
+            //    GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
+            //    //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
+            //    flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
+            //}
+            //place where heli needs to move to
             enemyPosition = transform.position;
 
             //make enemy run away and stop attacking
@@ -120,22 +121,19 @@ public class Enemy01 : MonoBehaviour
 
     void DefensivePositionReached()
     {
-
         Rigidbody2D rBody = GetComponent<Rigidbody2D>();
-
-        
 
         if (defensivePositionReached == true && transform.position.x >= defensiveObstacle.position.x +10)
         {
             //stop enemy from moving
             rBody.velocity = new Vector3(0, 0, 0);
            // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-            
+            stopMoving = true;
             //resume attacking Player
             sprite.flipX = false;
             ceaseFire = false;
-            defensivePositionReached = false;
-            stopMoving = true;
+            //defensivePositionReached = false;
+            
         }
     }
 

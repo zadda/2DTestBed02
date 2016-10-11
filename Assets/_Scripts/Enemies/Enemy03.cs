@@ -28,7 +28,10 @@ public class Enemy03 : MonoBehaviour
 
 
     private float countDowntime = 1.15f;
+    [SerializeField]
+    private GameObject healthBar;
 
+    private SpriteRenderer healthSprite;
     public float health = 200;
     public static bool stopAttacking = false;
 
@@ -72,6 +75,8 @@ public class Enemy03 : MonoBehaviour
         {
             Fire();
         }
+
+        healthBar.transform.localScale = new Vector3(health / 150, 1, 1);
     }
 
     void Fire()
