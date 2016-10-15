@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
     private Color startKleur;
     private bool hitByGas = false;
 
+    private float gasEffectDuration = 2.5f;
+
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -66,6 +69,11 @@ public class Player : MonoBehaviour
             gasMask.enabled = false;
         }
 
+
+        
+
+        GasEffectCheck();
+
         //updates the position
         playerX = transform.position.x;
         playerY = transform.position.y;
@@ -75,6 +83,7 @@ public class Player : MonoBehaviour
     void Move()
     {
         //movement
+        
 
         if (hitByGas)
         {
@@ -150,9 +159,11 @@ public class Player : MonoBehaviour
 
         if (objectCollidedwith.tag == "GasGrenade" && gasMask.enabled == false)
         {
+
             hitByGas = true;
             Debug.Log("Geraakt door gasgranaat");
             spriteColour.color = colour;
+
         }
 
 
@@ -172,5 +183,21 @@ public class Player : MonoBehaviour
             //TODO game over or lose life
             //Destroy(gameObject);
         }
+    }
+
+    void GasEffectCheck()
+    {
+        if (hitByGas)
+        {
+            gasEffectDuration -= Time.deltaTime;
+        }
+
+        if (gasEffectDuration <= 0)
+        {
+            hitByGas = false;
+            spriteColour.color = startKleur;
+            gasEffectDuration = 2.5f;
+        }
+       
     }
 }

@@ -2,28 +2,10 @@
 using System.Collections;
 using System;
 
-public class Enemy01 : MonoBehaviour
+
+public class Enemy02 : EnemyBehaviours
 {
-
-    //necessary for Raycast hit detection
-    [SerializeField]
-    private Transform lineStart;
-    [SerializeField]
-    private Transform lineEnd;
-
-    //Ammo prefabs and start point
-    [SerializeField]
-    private GameObject bullet;
-
-    [SerializeField]
-    private GameObject shell;
-
-    [SerializeField]
-    private Transform barrel;
-
-    [SerializeField]
-    private GameObject flares;
-
+    
     //for dealing with Grenade explosions
     [SerializeField]
     private SpriteRenderer sprite;
@@ -31,11 +13,7 @@ public class Enemy01 : MonoBehaviour
     // time befor shooting again
     private float countDowntime = 1.15f;
 
-    //health
-    [SerializeField]
-    private float health = 120;
-    [SerializeField]
-    private GameObject healthBar;
+ 
 
     //private SpriteRenderer healthSprite;
 
@@ -182,10 +160,7 @@ public class Enemy01 : MonoBehaviour
         }
 
         //kill the enemy
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        KillEnemy();
 
         // Hit by FlashGrenade -> cease fire flip sprite
 

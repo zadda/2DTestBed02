@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * used for stopping the enemy from attacking
+ * when colliding with the Players' shield or the player
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class CheckShieldPlayerCollision : MonoBehaviour

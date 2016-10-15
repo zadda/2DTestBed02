@@ -31,7 +31,7 @@ public class Enemy03 : MonoBehaviour
     [SerializeField]
     private GameObject healthBar;
 
-    private SpriteRenderer healthSprite;
+    //private SpriteRenderer healthSprite;
     public float health = 200;
     public static bool stopAttacking = false;
 
@@ -137,6 +137,7 @@ public class Enemy03 : MonoBehaviour
             // player komt ondersteboven
             sprite.flipY = true;
             rigid.velocity = new Vector3(50, 25, 0);
+            Destroy(gameObject, 1.5f);
         }
     }
 
