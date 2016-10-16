@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
+        //show/hide  the gasmask on the Player character
         if (Input.GetButton("GasMask"))
         {
            gasMask.enabled = true;
@@ -84,7 +86,7 @@ public class Player : MonoBehaviour
     {
         //movement
         
-
+        // flip x-axis movement when hit by Enemy Gas, to create "confused" behaviour
         if (hitByGas)
         {
             if (Input.GetButton("Right"))
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour
             }
         }
         
+        //default movement behaviour
         if (!hitByGas)
         {
             if (Input.GetButton("Left"))
@@ -110,10 +113,6 @@ public class Player : MonoBehaviour
                 transform.position += Vector3.left * walkSpeed;
             }
 
-
-            //if (Input.GetButton("Left"))
-
-
             if (Input.GetButton("Right"))
             {
                 //move player right
@@ -121,8 +120,6 @@ public class Player : MonoBehaviour
                 transform.position += Vector3.right * walkSpeed;
             }
         }
-
-       
     }
 
     //void OnCollisionEnter2D(Collision2D collision)
@@ -131,12 +128,7 @@ public class Player : MonoBehaviour
         
 
     //}
-
-    //gas grenade detection
-    //TODO add effect of grenade, invert movement keys, give player green colour:
-
-
-
+    
 
     // Enemy Projectile detection
 
@@ -144,10 +136,9 @@ public class Player : MonoBehaviour
     {
         GameObject objectCollidedwith = collision.gameObject;
 
-        //get amount of damage
-
-        //check first if we are colliding by a Player Projectile 
-        //if so, get Damage value from Player Projectile
+        
+        //check first if we are colliding with an Enemy projectiel
+        //if so, get Damage value of it
 
         if (objectCollidedwith.GetComponent<EnemyProjectileDamage>())
         {
@@ -159,11 +150,9 @@ public class Player : MonoBehaviour
 
         if (objectCollidedwith.tag == "GasGrenade" && gasMask.enabled == false)
         {
-
             hitByGas = true;
             Debug.Log("Geraakt door gasgranaat");
             spriteColour.color = colour;
-
         }
 
 
@@ -177,14 +166,15 @@ public class Player : MonoBehaviour
         //    sprite.transform.position -= new Vector3(15, 0, 0);
         //}
 
-
+        //TODO game over or lose life
         if (playerHealth <= 0)
         {
-            //TODO game over or lose life
+            
             //Destroy(gameObject);
         }
     }
 
+    // for checking the duration of the Enemy Gas grenade effect
     void GasEffectCheck()
     {
         if (hitByGas)

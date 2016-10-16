@@ -86,6 +86,7 @@
     <Compile Include="Assets\_Scripts\Player\PlayerProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerShield.cs" />
     <Compile Include="Assets\_Scripts\Player\SelectedWeapon.cs" />
+    <Compile Include="Assets\_Scripts\Player\StealthBombExplosion.cs" />
     <Compile Include="Assets\_Scripts\Player\StealthBomber.cs" />
     <Compile Include="Assets\_Scripts\ShellShredder.cs" />
     <Compile Include="Assets\_Scripts\Throwables\FlashBang.cs" />
