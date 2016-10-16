@@ -5,7 +5,7 @@ public class PlayerShield : MonoBehaviour
 {
 
     [SerializeField]
-    private float health = 250;
+    private float health = 750;
     [SerializeField]
     private Sprite[] shieldSprites;
     [SerializeField]
@@ -37,12 +37,12 @@ public class PlayerShield : MonoBehaviour
     //change the sprite or Appearance of the shield depending on damage taken
     void ShieldDamageSprite()
     {
-        if (health <= 200 && health > 150)
+        if (health <= 400 && health > 250)
         {
             spriteRenderer.sprite = shieldSprites[0];
             //this.GetComponent<SpriteRenderer>().sprite = shieldSprites[0];
         }
-        else if (health <= 150 && health > 100)
+        else if (health <= 250 && health > 100)
         {
             spriteRenderer.sprite = shieldSprites[1];
         }

@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour
     private Vector3 startPosition;
 
     //TODO set to infinite or really high, but keep an ammount for 'reloading' of gun
-    private int ammo = 18;
+    private int ammo = 1500;
     
 
     void Start()

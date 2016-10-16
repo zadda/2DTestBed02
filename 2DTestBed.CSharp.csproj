@@ -89,6 +89,7 @@
     <Compile Include="Assets\_Scripts\Player\StealthBombExplosion.cs" />
     <Compile Include="Assets\_Scripts\Player\StealthBomber.cs" />
     <Compile Include="Assets\_Scripts\ShellShredder.cs" />
+    <Compile Include="Assets\_Scripts\StopBullets.cs" />
     <Compile Include="Assets\_Scripts\Throwables\FlashBang.cs" />
     <Compile Include="Assets\_Scripts\Throwables\Grenade.cs" />
     <Compile Include="Assets\_Scripts\Throwables\GrenadeButtons.cs" />

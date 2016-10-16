@@ -67,6 +67,12 @@ public class FlashBang : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            return;
+        }
+
         GameObject explosie = Instantiate(flash, transform.position, Quaternion.identity) as GameObject;
 
         Destroy(explosie, 1f); // destroy explosie animatie
