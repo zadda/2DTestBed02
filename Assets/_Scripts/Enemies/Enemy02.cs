@@ -26,7 +26,7 @@ public class Enemy02 : EnemyBehaviours
     public static bool defensivePositionReached;
     public static Transform defensiveObstacle;
 
-    private bool stopMoving;
+    private bool stopMoving = true;
 
     int flaresFired = 0;
     // Update is called once per frame
@@ -125,7 +125,8 @@ public class Enemy02 : EnemyBehaviours
         countDowntime = 1.15f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;
-        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-40, 0, 0); // bullet speed in -X position
+        kogel.transform.rotation = Quaternion.Euler(0, 0, 5);
+        kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-80, -20, 0); // bullet speed in -X position
 
         //beweeg enemy naar Player toe
 

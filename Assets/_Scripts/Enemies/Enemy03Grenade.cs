@@ -34,7 +34,7 @@ public class Enemy03Grenade : MonoBehaviour
     [SerializeField]
     private bool grenadeFired = true;
 
-    int launchSpeed = -70;
+    int launchSpeed = -85;
     int grenadesFired = 0;
 
     private float timerCountdown = 2f;
@@ -132,9 +132,12 @@ public class Enemy03Grenade : MonoBehaviour
         GameObject granaat = Instantiate(grenade, launchPosition.position, Quaternion.identity) as GameObject;
         //granaat.transform.rotation = Quaternion.Euler(0, 0, 351);
         granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(launchSpeed, launchPosition.rotation.z * 100 + 2, 0);
-        launchSpeed -= 20;
 
-
+        if (launchSpeed >= -140)
+        {
+            launchSpeed -= 20;
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)

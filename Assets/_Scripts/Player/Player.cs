@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 
-    public static float playerHealth = 500;
+    public static float playerHealth = 1500;
 
 
     private SpriteRenderer sprite;
@@ -101,6 +101,15 @@ public class Player : MonoBehaviour
                 sprite.flipX = false;
                 transform.position += Vector3.right * walkSpeed;
             }
+
+            if (Input.GetButton("Up"))
+            {
+                transform.position += Vector3.down * walkSpeed;
+            }
+            if (Input.GetButton("Down"))
+            {
+                transform.position += Vector3.up * walkSpeed;
+            }
         }
         
         //default movement behaviour
@@ -118,6 +127,15 @@ public class Player : MonoBehaviour
                 //move player right
                 sprite.flipX = false;
                 transform.position += Vector3.right * walkSpeed;
+            }
+
+            if (Input.GetButton("Up"))
+            {
+                transform.position += Vector3.up * walkSpeed;
+            }
+            if (Input.GetButton("Down"))
+            {
+                transform.position += Vector3.down * walkSpeed;
             }
         }
     }
