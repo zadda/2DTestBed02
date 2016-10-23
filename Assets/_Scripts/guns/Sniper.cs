@@ -21,6 +21,7 @@ public class Sniper : MonoBehaviour
     private SpriteRenderer spriteSniper;
     private Vector3 startPosition;
 
+    Vector3 mousePOS;
     
     void Start () 
 	{
@@ -30,7 +31,14 @@ public class Sniper : MonoBehaviour
 	
 	void Update () 
 	{
-       
+
+        mousePOS = Input.mousePosition;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "Sniper")
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
+        }
+
         if (SelectedWeapon.selectedWeapon == "Sniper" && Input.GetMouseButtonDown(0))
         {
             Shoot();
@@ -90,8 +98,11 @@ public class Sniper : MonoBehaviour
                 }
             //kogel vertrekt van positie van Barrel
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
-            
+            kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z * 100);
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, transform.rotation.z * 100, 0);
+
+            //kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(55, 0, 0);
+
             Instantiate(shell, transform.position, Quaternion.identity);
         }
         else

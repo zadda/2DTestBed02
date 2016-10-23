@@ -52,6 +52,7 @@ public class EnemyBehaviours : MonoBehaviour
     {
         if (health <= 0)
         {
+            Player.showLaserDot = false;
             Destroy(gameObject);
         }
     }

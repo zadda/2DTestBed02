@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SpriteRenderer gasMask;
 
+    [SerializeField]
+    private GameObject laserDot;
+
     //access for other scripts:
     public static float playerX = 0f;
     public static float playerY = 0f;
@@ -46,11 +49,13 @@ public class Player : MonoBehaviour
 
     private float gasEffectDuration = 2.5f;
 
+    public static bool showLaserDot = false;
+
 
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-
+        laserDot.SetActive(false);
         gun.transform.position = new Vector3(11 - 1.5f, 3 + 4);
         startKleur = spriteColour.color;
 
@@ -71,7 +76,16 @@ public class Player : MonoBehaviour
             gasMask.enabled = false;
         }
 
+        //Laser Dot Check
 
+        if (showLaserDot == true)
+        {
+            laserDot.SetActive(true);
+        }
+        else if(showLaserDot == false)
+        {
+            laserDot.SetActive(false);
+        }
         
 
         GasEffectCheck();

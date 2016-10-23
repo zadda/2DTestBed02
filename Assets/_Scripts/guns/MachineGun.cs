@@ -22,6 +22,7 @@ public class MachineGun : MonoBehaviour
     private SpriteRenderer spriteGun;
     private Vector3 startPosition;
 
+    Vector3 mousePOS;
     
     void Start()
     {
@@ -32,7 +33,13 @@ public class MachineGun : MonoBehaviour
     
     void Update()
     {
-      
+
+        mousePOS = Input.mousePosition;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SelectedWeapon.selectedWeapon == "MachineGun")
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, mousePOS.y / 10);
+        }
         //////////
 
         if (SelectedWeapon.selectedWeapon == "MachineGun" && Input.GetMouseButtonDown(0))
@@ -91,9 +98,13 @@ public class MachineGun : MonoBehaviour
                     ammoLeft.color = Color.red;
                 }
 
+            
             //kogel vertrekt van positie van Barrel
             GameObject kogel = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+            kogel.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z * 100);
+            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, transform.rotation.z * 100, 0);
+
+//            kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
 
             //TODO check if eject shell on players location is correct
             Instantiate(shell, transform.position, Quaternion.identity);
@@ -113,9 +124,12 @@ public class MachineGun : MonoBehaviour
     {
         //kogel vertrekt van positie van Barrel
         GameObject kogel2 = Instantiate(bullet, barrel.transform.position, Quaternion.identity) as GameObject;
-        kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+        kogel2.transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z * 100);
+        kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, transform.rotation.z * 100, 0);
 
-      
+        //kogel2.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 0, 0);
+
+
         Instantiate(shell, transform.position, Quaternion.identity);
 
     }

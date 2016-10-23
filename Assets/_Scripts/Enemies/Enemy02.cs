@@ -13,8 +13,10 @@ public class Enemy02 : EnemyBehaviours
     // time befor shooting again
     private float countDowntime = 1.15f;
 
- 
+    // for displaying Laser Dot on Player
+    //public static bool showLaserDot = false;
 
+ 
     //private SpriteRenderer healthSprite;
 
     private bool ceaseFire = false;
@@ -29,14 +31,13 @@ public class Enemy02 : EnemyBehaviours
     private bool stopMoving = true;
 
     int flaresFired = 0;
+
+    int countHits = 0;
+
     // Update is called once per frame
     void Update()
     {
-        // ceaseFire true means enemy is hit by Flash grenade
-        if (ceaseFire)
-        {
-            HitByFlashEffect();
-        }
+       
         countDowntime -= Time.deltaTime;
 
         /*
@@ -51,14 +52,23 @@ public class Enemy02 : EnemyBehaviours
         //controleer of er een hit met de player is
 
 
+
         if (hit.collider != null && countDowntime <= 0 && hit.transform.tag.Equals("Player")) //"Player" hit.transform.name.Equals("Player")) MainPlayer
         {
+
+            countHits++;
+            Player.showLaserDot = true;
+
             Fire();
 
             // TODO RayCast Example
             Debug.DrawRay(lineStart.position, Vector3.left * 45f, Color.green);
 
             //Debug.DrawLine(lineStart.position, lineEnd.position, Color.red);
+        }
+        else if (hit.collider == null && countHits > 0)
+        {
+            Player.showLaserDot = false;
         }
 
         healthBar.transform.localScale = new Vector3(health / 100, 1, 1);
@@ -72,48 +82,17 @@ public class Enemy02 : EnemyBehaviours
         
         if (health <= 50 && flaresFired == 0)
         {
-            //make sure Heli can only be called once for now
-            //TODO decide when allow enemy to call Heli
-            //if (EnemyHeli.heliCalled == false )
-            //{
-                
-            //    EnemyHeli.heliCalled = true;
-
-            //    flaresFired++;
-            //    // launch Flare and call HeliSupport
-            //    GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
-            //    //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
-            //    flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
-            //}
-            //place where heli needs to move to
+           
             enemyPosition = transform.position;
 
             //make enemy run away and stop attacking
-            ceaseFire = true;
-            sprite.flipX = true;
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
-        }
-
-        DefensivePositionReached();
-    }
-
-    void DefensivePositionReached()
-    {
-        Rigidbody2D rBody = GetComponent<Rigidbody2D>();
-
-        if (defensivePositionReached == true && transform.position.x >= defensiveObstacle.position.x +10)
-        {
-            //stop enemy from moving
-            rBody.velocity = new Vector3(0, 0, 0);
-           // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-            stopMoving = true;
-            //resume attacking Player
-            sprite.flipX = false;
-            ceaseFire = false;
-            //defensivePositionReached = false;
-            
+            //ceaseFire = true;
+            //sprite.flipX = true;
+            //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
     }
+
+    
 
     void Fire()
     {
@@ -128,14 +107,7 @@ public class Enemy02 : EnemyBehaviours
         kogel.transform.rotation = Quaternion.Euler(0, 0, 5);
         kogel.GetComponent<Rigidbody2D>().velocity = new Vector3(-80, -20, 0); // bullet speed in -X position
 
-        //beweeg enemy naar Player toe
-
-        if (!stopMoving)
-        {
-            transform.position += new Vector3(-3f, 0f);
-        }
-        
-
+      
         //GameObject huls = Instantiate(shell, transform.position, Quaternion.identity) as GameObject;
         // geen as GameObject want we doen er niets mee in code, wordt vernietigd door shredder
         Instantiate(shell, transform.position, Quaternion.identity);
@@ -163,13 +135,7 @@ public class Enemy02 : EnemyBehaviours
         //kill the enemy
         KillEnemy();
 
-        // Hit by FlashGrenade -> cease fire flip sprite
-
-        if (objectCollidedwith.tag == "Flash")
-        {
-            ceaseFire = true;
-            HitByFlashEffect();
-        }
+       
 
         // Hit by Grenade
         //TODO rigidbody AddForce ?
@@ -185,31 +151,5 @@ public class Enemy02 : EnemyBehaviours
 
             //this.GetComponent<Rigidbody2D>().velocity = new Vector3(30, 15, 0);
         }
-    }
-
-    //decide what to do when hit by Flash grenade, for x amount of " flip the enemy sprite to create
-    // confused behaviour
-
-    void HitByFlashEffect()
-    {
-        flashGrenadeDuration -= Time.deltaTime;
-
-        //keep flipping the enemy
-        if (flashGrenadeDuration >= 0)
-        {
-            sprite.flipX = true;
-            Invoke("FlipXFalse", 1f);
-        }
-        else
-        {
-            ceaseFire = false;
-            flashGrenadeDuration = 5;
-        }
-    }
-
-    void FlipXFalse()
-    {
-        sprite.flipX = false;
-    }
-
+    }   
 }
