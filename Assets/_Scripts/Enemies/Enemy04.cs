@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy03Grenade : MonoBehaviour
+public class Enemy04 : MonoBehaviour
 {
     [SerializeField]
     private Transform lineStart;
@@ -20,7 +20,7 @@ public class Enemy03Grenade : MonoBehaviour
     [SerializeField]
     private Transform launchPosition;
 
-    private Vector3 enemyPosition;
+    public static Vector3 enemyPosition;
 
     [SerializeField]
     private GameObject gas;

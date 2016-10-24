@@ -11,15 +11,15 @@ public class Obstacles : MonoBehaviour
     {
         GameObject objectCollidedwith = collision.gameObject;
 
-        if (objectCollidedwith.tag == "Enemy")
-        {
-            Debug.Log("Obstacle Reached");
+        //if (objectCollidedwith.tag == "Enemy")
+        //{
+        //    //Debug.Log("Obstacle Reached");
 
-            Enemy01.defensiveObstacle = transform;
+        //    Enemy01.defensiveObstacle = transform;
 
 
-            Enemy01.defensivePositionReached = true;
-        }
+        //    Enemy01.defensivePositionReached = true;
+        //}
 
     }
 

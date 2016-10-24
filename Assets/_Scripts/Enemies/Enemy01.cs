@@ -32,7 +32,7 @@ public class Enemy01 : MonoBehaviour
     private float countDowntime = 1.15f;
 
     //health
-    [SerializeField]
+    
     private float health = 120;
     [SerializeField]
     private GameObject healthBar;
@@ -43,9 +43,9 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
-    public static Vector3 enemyPosition;
+    private Vector3 enemyPosition;
 
-    public static bool defensivePositionReached;
+    private bool defensivePositionReached;
     public static Transform defensiveObstacle;
 
     private bool stopMoving;
@@ -92,7 +92,8 @@ public class Enemy01 : MonoBehaviour
     void CheckHealth()
     {
         
-        if (health <= 50 && flaresFired == 0)
+
+        if (health <= 50)// && flaresFired == 0)
         {
             //make sure Heli can only be called once for now
             //TODO decide when allow enemy to call Heli
@@ -115,7 +116,7 @@ public class Enemy01 : MonoBehaviour
             sprite.flipX = true;
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
-
+        //TODO, make a cleaner function, currently gives error when either one enemy can trigger this to true
         DefensivePositionReached();
     }
 
@@ -178,6 +179,7 @@ public class Enemy01 : MonoBehaviour
             float damage = objectCollidedwith.GetComponent<PlayerProjectileDamage>().damage;
 
             health -= damage;
+            //Debug.Log("health of Enemy01 " + health);
             Destroy(objectCollidedwith); // destroy Player projectile
         }
 
@@ -185,6 +187,12 @@ public class Enemy01 : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+
+        if (objectCollidedwith.tag == "Obstacle")
+        {
+            defensivePositionReached = true;
+            defensiveObstacle = objectCollidedwith.transform;
         }
 
         // Hit by FlashGrenade -> cease fire flip sprite

@@ -13,20 +13,9 @@ public class Enemy02 : EnemyBehaviours
     // time befor shooting again
     private float countDowntime = 1.15f;
 
-    // for displaying Laser Dot on Player
-    //public static bool showLaserDot = false;
+   
 
- 
-    //private SpriteRenderer healthSprite;
-
-    private bool ceaseFire = false;
-
-    private float flashGrenadeDuration = 5;
-
-    public static Vector3 enemyPosition;
-
-    public static bool defensivePositionReached;
-    public static Transform defensiveObstacle;
+   
 
     private bool stopMoving = true;
 
@@ -83,7 +72,7 @@ public class Enemy02 : EnemyBehaviours
         if (health <= 50 && flaresFired == 0)
         {
            
-            enemyPosition = transform.position;
+            //enemyPosition = transform.position;
 
             //make enemy run away and stop attacking
             //ceaseFire = true;
@@ -92,15 +81,9 @@ public class Enemy02 : EnemyBehaviours
         }
     }
 
-    
-
     void Fire()
     {
-
-        if (ceaseFire)
-        {
-            return;
-        }
+        
         countDowntime = 1.15f;
 
         GameObject kogel = Instantiate(bullet, barrel.position, Quaternion.identity) as GameObject;

@@ -71,7 +71,7 @@
     <Compile Include="Assets\_Scripts\Enemies\Enemy01.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy02.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy03.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\Enemy03Grenade.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Enemy04.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyBehaviours.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />

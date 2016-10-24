@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
         if (objectCollidedwith.tag == "GasGrenade" && gasMask.enabled == false)
         {
             hitByGas = true;
-            Debug.Log("Geraakt door gasgranaat");
+           // Debug.Log("Geraakt door gasgranaat");
             spriteColour.color = colour;
         }
 

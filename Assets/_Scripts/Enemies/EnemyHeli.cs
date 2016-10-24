@@ -40,12 +40,12 @@ public class EnemyHeli : MonoBehaviour
 
     void Update()
     {
-        if (heliCalled == true && transform.position.x >= Enemy01.enemyPosition.x)
+        if (heliCalled == true && transform.position.x >= Enemy04.enemyPosition.x)
         {
             transform.Translate(Vector3.left * 30.5f * Time.deltaTime);
         }
 
-        if (transform.position.x <= Enemy01.enemyPosition.x)
+        if (transform.position.x <= Enemy04.enemyPosition.x)
         {
             isFiring = true;
         }
