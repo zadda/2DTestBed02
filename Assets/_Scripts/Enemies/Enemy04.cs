@@ -92,6 +92,8 @@ public class Enemy04 : MonoBehaviour
             //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
             flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
 
+            Destroy(flare, 5f);
+
             //move enemy
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
