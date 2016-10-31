@@ -5,7 +5,7 @@ public class ConeOfVisionJet : MonoBehaviour
 {
 
     private float timeSinceDetected = 0f;
-    private bool playerDetected = false;
+    public static bool playerDetected = false;
 
     private SpriteRenderer sprite;
     [SerializeField]
@@ -59,6 +59,7 @@ public class ConeOfVisionJet : MonoBehaviour
         if (objectCollidedwith.tag.Equals("Enemy"))
         {
             sprite.color = enemyDetected;
+            playerDetected = false;
         }
 
     }

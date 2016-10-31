@@ -38,8 +38,16 @@ public class Enemy03 : MonoBehaviour
     private bool ceaseFire = false;
 
     private float flashGrenadeDuration = 5;
-    
-    
+
+    private Animator animWave;
+
+    void Start()
+    {
+        animWave = GetComponent<Animator>();
+    }
+
+
+
     void Update()
     {
         // ceaseFire true means enemy is hit by Flash grenade
@@ -76,8 +84,20 @@ public class Enemy03 : MonoBehaviour
             Fire();
         }
 
+        CheckHealth();
+
         healthBar.transform.localScale = new Vector3(health / 150, 1, 1);
     }
+
+    void CheckHealth()
+    {
+        if (health <= 70 && EnemyJet.jetCalled == false)
+        {
+            animWave.SetTrigger("SendWaveSignal");
+            EnemyJet.jetCalled = true;
+        }
+    }
+
 
     void Fire()
     {

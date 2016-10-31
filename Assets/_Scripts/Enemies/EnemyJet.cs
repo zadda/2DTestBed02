@@ -39,12 +39,33 @@ public class EnemyJet : MonoBehaviour
 
     public static bool isBombing = false;
 
-   
+    public static bool jetCalled = false;
+
+    private int counter = 0;
+    Vector3 moveJet = new Vector3(10, 0, 0);
 
     void Update()
     {
         //move the jet
-        transform.Translate(Vector3.left * 20.5f * Time.deltaTime);
+
+        // move until detect Player
+
+        if (jetCalled && ConeOfVisionJet.playerDetected == false)
+        {
+            transform.Translate(Vector3.left * 80.5f * Time.deltaTime); //20.5f
+            
+        }
+
+        if (ConeOfVisionJet.playerDetected == true && counter == 0)
+        {
+            transform.position -= moveJet;
+            counter++;
+        }
+
+        if (counter == 3)
+        {
+            ConeOfVisionJet.playerDetected = false;
+        }
 
         //check if is Firing is true + implement a time delay so no constant bombing
         if (isFiring)
@@ -56,7 +77,7 @@ public class EnemyJet : MonoBehaviour
 
             timeDelay -= Time.deltaTime;
         }
-        if (isBombing)
+        if (isBombing && counter < 3)
         {
             DropBomb();
         }
@@ -88,6 +109,7 @@ public class EnemyJet : MonoBehaviour
 
     void DropBomb()
     {
+        counter++;
         isBombing = false;
         //kogel vertrekt van positie van Barrel
         //GameObject bom = Instantiate(bomb, barrel2.transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
