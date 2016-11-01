@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Enemy_People_Carrier.cs" />
     <Compile Include="Assets\LaserDotGreen.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\BombExplosion.cs" />
