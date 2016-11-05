@@ -43,14 +43,13 @@ public class Enemy01 : MonoBehaviour
 
     private float flashGrenadeDuration = 5;
 
-    private Vector3 enemyPosition;
-
+ 
     private bool defensivePositionReached;
     public static Transform defensiveObstacle;
 
     private bool stopMoving;
 
-    int flaresFired = 0;
+  
     // Update is called once per frame
     void Update()
     {
@@ -95,21 +94,8 @@ public class Enemy01 : MonoBehaviour
 
         if (health <= 50)// && flaresFired == 0)
         {
-            //make sure Heli can only be called once for now
-            //TODO decide when allow enemy to call Heli
-            //if (EnemyHeli.heliCalled == false )
-            //{
-                
-            //    EnemyHeli.heliCalled = true;
-
-            //    flaresFired++;
-            //    // launch Flare and call HeliSupport
-            //    GameObject flare = Instantiate(flares, barrel.position, Quaternion.identity) as GameObject;
-            //    //transform.Translate(Vector3.up * 220.5f * Time.deltaTime);
-            //    flare.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 30, 0); // bullet speed in -X position
-            //}
-            //place where heli needs to move to
-            enemyPosition = transform.position;
+            
+           
 
             //make enemy run away and stop attacking
             ceaseFire = true;

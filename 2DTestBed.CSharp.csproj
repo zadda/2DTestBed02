@@ -63,8 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Enemy_People_Carrier.cs" />
     <Compile Include="Assets\LaserDotGreen.cs" />
+    <Compile Include="Assets\Trigger.cs" />
     <Compile Include="Assets\_Scripts\Camera.cs" />
     <Compile Include="Assets\_Scripts\Enemies\BombExplosion.cs" />
     <Compile Include="Assets\_Scripts\Enemies\CheckShieldPlayerCollision.cs" />
@@ -73,11 +73,13 @@
     <Compile Include="Assets\_Scripts\Enemies\Enemy02.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy03.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Enemy04.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Enemy05.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyBehaviours.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyHeli.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyJet.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyProjectileDamage.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyTank.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Enemy_People_Carrier.cs" />
     <Compile Include="Assets\_Scripts\Enemies\GasGrenade.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Obstacles.cs" />
     <Compile Include="Assets\_Scripts\Enemies\SearchLight.cs" />

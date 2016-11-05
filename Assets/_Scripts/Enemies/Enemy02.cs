@@ -15,10 +15,6 @@ public class Enemy02 : EnemyBehaviours
 
    
 
-   
-
-    private bool stopMoving = true;
-
     int flaresFired = 0;
 
     int countHits = 0;
@@ -72,12 +68,6 @@ public class Enemy02 : EnemyBehaviours
         if (health <= 50 && flaresFired == 0)
         {
            
-            //enemyPosition = transform.position;
-
-            //make enemy run away and stop attacking
-            //ceaseFire = true;
-            //sprite.flipX = true;
-            //gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
     }
 

@@ -31,21 +31,13 @@ public class Enemy04 : MonoBehaviour
 
     public static bool stopAttacking = false;
     
-    [SerializeField]
-    private bool grenadeFired = true;
-
+  
     int launchSpeed = -85;
-    int grenadesFired = 0;
+    
 
     private float timerCountdown = 2f;
 
 
-    // Use this for initialization
-    void Start () 
-	{
-	
-	}
-	
 	// Update is called once per frame
 	void Update () 
 	{
@@ -64,10 +56,6 @@ public class Enemy04 : MonoBehaviour
         timerCountdown -= Time.deltaTime;
 
 
-        //if (!grenadeFired && timerCountdown <= 0)
-        //{
-        //   Fire();
-        //}
         healthBar.transform.localScale = new Vector3(health / 200, 1, 1);
 
         CheckHealth();
@@ -97,39 +85,15 @@ public class Enemy04 : MonoBehaviour
             //move enemy
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(40, 0, 0);
         }
-
-        DefensivePositionReached();
+        
     }
 
-    void DefensivePositionReached()
-    {
-
-        Rigidbody2D rBody = GetComponent<Rigidbody2D>();
-
-
-
-        //if (defensivePositionReached == true && transform.position.x >= defensiveObstacle.position.x + 10)
-        //{
-        //    rBody.velocity = new Vector3(0, 0, 0);
-        //    // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-
-        //    sprite.flipX = false;
-        //    ceaseFire = false;
-        //    defensivePositionReached = false;
-        //    stopMoving = true;
-        //}
-    }
-
-
+    
     void Fire()
     {
 
         timerCountdown = 2;
-        grenadesFired++;
-        if (grenadesFired == 5)
-        {
-            grenadeFired = true;
-        }
+      
         
         GameObject granaat = Instantiate(grenade, launchPosition.position, Quaternion.identity) as GameObject;
         //granaat.transform.rotation = Quaternion.Euler(0, 0, 351);
