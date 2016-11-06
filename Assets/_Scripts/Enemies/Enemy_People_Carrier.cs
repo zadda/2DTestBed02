@@ -17,13 +17,13 @@ public class Enemy_People_Carrier : MonoBehaviour
     private int enemiesSpawned = 0;
 
     // Use this for initialization
-    void Start () 
-	{
+    void Start()
+    {
         GameObject enemy = Instantiate(enemyToSpawn, spawnPoint.transform.position, Quaternion.Euler(0f, 0f, 0f)) as GameObject;
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update () 
 	{
         transform.Translate(Vector3.left * 10.5f * Time.deltaTime);
         countDownTime -= Time.deltaTime;

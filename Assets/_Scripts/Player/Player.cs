@@ -99,7 +99,9 @@ public class Player : MonoBehaviour
     void Move()
     {
         //movement
-        
+
+       
+
         // flip x-axis movement when hit by Enemy Gas, to create "confused" behaviour
         if (hitByGas)
         {
@@ -129,8 +131,9 @@ public class Player : MonoBehaviour
         //default movement behaviour
         if (!hitByGas)
         {
-            if (Input.GetButton("Left"))
+            if (Input.GetButton("Left") && transform.position.x >= 10) //limit movement on the left
             {
+                
                 //move player
                 sprite.flipX = true;
                 transform.position += Vector3.left * walkSpeed;
@@ -143,11 +146,11 @@ public class Player : MonoBehaviour
                 transform.position += Vector3.right * walkSpeed;
             }
 
-            if (Input.GetButton("Up"))
+            if (Input.GetButton("Up") && transform.position.y <= 18)
             {
                 transform.position += Vector3.up * walkSpeed;
             }
-            if (Input.GetButton("Down"))
+            if (Input.GetButton("Down") && transform.position.y >= 4.5)
             {
                 transform.position += Vector3.down * walkSpeed;
             }

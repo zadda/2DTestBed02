@@ -116,11 +116,11 @@ public class Enemy01 : MonoBehaviour
             rBody.velocity = new Vector3(0, 0, 0);
            // rBody.constraints = RigidbodyConstraints2D.FreezePositionX;
             stopMoving = true;
+
             //resume attacking Player
             sprite.flipX = false;
             ceaseFire = false;
             //defensivePositionReached = false;
-            
         }
     }
 
