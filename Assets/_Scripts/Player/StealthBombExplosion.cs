@@ -23,7 +23,7 @@ public class StealthBombExplosion : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            //show explosion animation when an enemy bomb hits the player
+            //show explosion animation when a player bomb hits the enemy
             GameObject explosie = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             // destroy faster than when hitting environment
             Destroy(explosie, 0.5f); // explosie is the animation

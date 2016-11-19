@@ -1,5 +1,6 @@
 ﻿/*
  * checks and sets the selected weapon 
+ * attached to the Player GameObject
  * 
  */
 

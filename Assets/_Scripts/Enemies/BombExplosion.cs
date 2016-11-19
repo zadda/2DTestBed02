@@ -8,6 +8,7 @@ public class BombExplosion : MonoBehaviour
     private GameObject explosion;
 
 
+    //ontploffing bij raken omgeving
     void OnCollisionEnter2D(Collision2D collision)
     {
         //show explosion animation when an enemy bomb hits the player
@@ -16,6 +17,7 @@ public class BombExplosion : MonoBehaviour
         Destroy(gameObject); //gameObject is the bomb
     }
 
+    //ontploft wanneer Player geraakt wordt
     void OnTriggerEnter2D(Collider2D collision)
     {
         //show explosion animation when an enemy bomb hits the player

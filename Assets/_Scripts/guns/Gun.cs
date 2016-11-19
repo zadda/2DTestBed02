@@ -54,8 +54,6 @@ public class Gun : MonoBehaviour
         {
             transform.position = startPosition;
         }
-
-       
     }
 
     //TODO update movement

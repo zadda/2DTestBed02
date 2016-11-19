@@ -42,18 +42,15 @@ public class Grenade : MonoBehaviour
             {
                 ammoLeft.color = Color.red;
             }
+           
 
             GameObject granaat = Instantiate(grenade, grenadeStartPosition.transform.position, Quaternion.identity) as GameObject;
-            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -10, 0); // 120,-30,0
+            granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -20, 0); // 120,-30,0
             granaat.GetComponent<Rigidbody2D>().rotation = -25; // -25
-        }
-        else
-        {
-            return;
-        }
+        }         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
 
         // instantiate as GameObject anders kunnen we het niet verwijderen omdat het een prefab is
@@ -65,8 +62,9 @@ public class Grenade : MonoBehaviour
     }
 
     //added so that grenade explodes when hitting enemy
-    public void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        //stops explodion when hitting Player or Shield
         if (collision.gameObject.tag.Equals("Player"))
         {
             return;

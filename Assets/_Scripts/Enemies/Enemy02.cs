@@ -19,10 +19,23 @@ public class Enemy02 : EnemyBehaviours
 
     int countHits = 0;
 
+    public Transform target;
+
+    void OnDrawGizmosSelected()
+    {
+        if (target != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, target.position);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-       
+        
+        
+
         countDowntime -= Time.deltaTime;
 
         /*

@@ -21,7 +21,7 @@ public class SmokeGrenade : MonoBehaviour
     public static bool jetCalled = false;
 
 
-    private int ammo = 1;
+    private int ammo = 2;
 
     void Start()
     {

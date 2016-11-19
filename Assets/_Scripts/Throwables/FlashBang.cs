@@ -28,7 +28,7 @@ public class FlashBang : MonoBehaviour
     }
 
 
-    public void Throw()
+    void Throw()
     {
 
         //only throw grenade when enough ammo
@@ -48,15 +48,16 @@ public class FlashBang : MonoBehaviour
             granaat.GetComponent<Rigidbody2D>().velocity = new Vector3(120, -11, 0);
             granaat.GetComponent<Rigidbody2D>().rotation = -25;
         }
-        else
-        {
-            return;
-        }
+        //TODO check if redundant
+        //else
+        //{
+        //    return;
+        //}
 
        
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject explosie = Instantiate(flash, transform.position, Quaternion.identity) as GameObject;
 
@@ -65,7 +66,7 @@ public class FlashBang : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag.Equals("Player"))

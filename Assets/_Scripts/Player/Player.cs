@@ -99,41 +99,12 @@ public class Player : MonoBehaviour
     void Move()
     {
         //movement
-
-       
-
-        // flip x-axis movement when hit by Enemy Gas, to create "confused" behaviour
-        if (hitByGas)
-        {
-            if (Input.GetButton("Right"))
-            {
-                //move player
-                sprite.flipX = true;
-                transform.position += Vector3.left * walkSpeed;
-            }
-            if (Input.GetButton("Left"))
-            {
-                //move player right
-                sprite.flipX = false;
-                transform.position += Vector3.right * walkSpeed;
-            }
-
-            if (Input.GetButton("Up"))
-            {
-                transform.position += Vector3.down * walkSpeed;
-            }
-            if (Input.GetButton("Down"))
-            {
-                transform.position += Vector3.up * walkSpeed;
-            }
-        }
-        
         //default movement behaviour
         if (!hitByGas)
         {
             if (Input.GetButton("Left") && transform.position.x >= 10) //limit movement on the left
             {
-                
+
                 //move player
                 sprite.flipX = true;
                 transform.position += Vector3.left * walkSpeed;
@@ -155,17 +126,34 @@ public class Player : MonoBehaviour
                 transform.position += Vector3.down * walkSpeed;
             }
         }
+
+
+        // flip x-axis movement when hit by Enemy Gas, to create "confused" behaviour
+        if (hitByGas)
+        {
+            if (Input.GetButton("Right"))
+            {
+                //move player
+                sprite.flipX = true;
+                transform.position += Vector3.left * walkSpeed;
+            }
+            if (Input.GetButton("Left"))
+            {
+                //move player right
+                sprite.flipX = false;
+                transform.position += Vector3.right * walkSpeed;
+            }
+
+            if (Input.GetButton("Up") && transform.position.y >= 4.5)
+            {
+                transform.position += Vector3.down * walkSpeed;
+            }
+            if (Input.GetButton("Down"))
+            {
+                transform.position += Vector3.up * walkSpeed;
+            }
+        }
     }
-
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    GameObject objectCollidedwith = collision.gameObject;
-        
-
-    //}
-    
-
-    // Enemy Projectile detection
 
     void OnTriggerEnter2D(Collider2D collision)
     {
