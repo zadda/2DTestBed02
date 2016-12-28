@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*
+ * script attached to obstacles such as "sandbags"
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class Obstacles : MonoBehaviour 

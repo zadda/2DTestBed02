@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+ * attached to the /prefabs/enemies/bomb.prefab
+ * bomb dropped by enemyJet
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 
 public class BombExplosion : MonoBehaviour 

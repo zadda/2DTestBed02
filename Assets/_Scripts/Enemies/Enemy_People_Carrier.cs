@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*
+ * disabled on the start
+ * enabled by player walking on Trigger
+ * spawns 3 enemies, then flies along
+ * 
+ */
+
+using UnityEngine;
 using System.Collections;
 using System;
 

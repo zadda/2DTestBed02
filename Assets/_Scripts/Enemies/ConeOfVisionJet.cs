@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * This blue cone is attached to the enemy Jet and to it the script is attached
+ * 
+ * it checks if the object it collides with is a player or enemy
+ * when detecting an enemy the cone turns green and the plane flies along
+ * upon detecting a player char or shield, it turns red and bombs the player
+ * 
+ */
+
+
+using UnityEngine;
 using System.Collections;
 
 public class ConeOfVisionJet : MonoBehaviour

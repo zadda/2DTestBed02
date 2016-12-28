@@ -1,5 +1,7 @@
 ﻿/*
- * the helicopter moves around
+ * the helicopter hover on a set position
+ * is called by enemy04
+ * 
  * has a searchlight animation which is to check
  * if it's detecting the Player, if so
  * start firing

@@ -1,8 +1,8 @@
 ﻿/*
- * patrols the sky
+ * called by Enemy03 when certain amount of damage is achieved
  * has a cone which checks for player or enemy
  * changes color of spotlight appropriately
- * bombs the Player and the Shield
+ * bombs the Player and/or the Shield
  */
 
 
