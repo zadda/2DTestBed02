@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SpriteRenderer gasMask;
 
+    
     [SerializeField]
     private GameObject laserDot;
 

@@ -14,9 +14,16 @@ public class Effects : MonoBehaviour
 
     [SerializeField]
     private GameObject SpijkerBom;
+    [SerializeField]
+    private Animator Gravity;
 
     public void EnableSpijkerBom()
     {
         SpijkerBom.SetActive(true);
+    }
+
+    public void DisableAnimator()
+    {
+        Gravity.enabled = false;
     }
 }

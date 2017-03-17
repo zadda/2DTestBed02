@@ -3,6 +3,7 @@
  * that contains the selectable WEAPONS
  * this listens in the background if a key (1-5) is pressed
  * that accounts for a specific weapon
+ * it then changes the selected weapon in the quad
  */
 
 using UnityEngine;
